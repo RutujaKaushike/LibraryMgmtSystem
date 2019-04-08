@@ -1,6 +1,6 @@
 <div>
     <label>
-        <select class="selectpicker" data-live-search="true" multiple title="categories">
+        <select class="selectpicker" data-live-search="true" multiple title="categories" name="category[]">
             <?php
             $username = "root";
             $password = "root";

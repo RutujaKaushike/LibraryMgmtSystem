@@ -1,34 +1,5 @@
 <?php
-//session_start();
-//error_reporting(0);
-//include('includes/config.php');
-//if(strlen($_SESSION['alogin'])==0)
-//{
-//    header('location:index.php');
-//}
-//else{
-//
-//    if(isset($_POST['create']))
-//    {
-//        $author=$_POST['author'];
-//        $sql="INSERT INTO  tblauthors(AuthorName) VALUES(:author)";
-//        $query = $dbh->prepare($sql);
-//        $query->bindParam(':author',$author,PDO::PARAM_STR);
-//        $query->execute();
-//        $lastInsertId = $dbh->lastInsertId();
-//        if($lastInsertId)
-//        {
-//            $_SESSION['msg']="Author Listed successfully";
-//            header('location:manage-authors.php');
-//        }
-//        else
-//        {
-//            $_SESSION['error']="Something went wrong. Please try again";
-//            header('location:manage-authors.php');
-//        }
-//
-//    }
-//    ?>
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
@@ -51,16 +22,16 @@
 <br>
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
-    <form class="text-center border border-light p-5">
+    <form class="text-center border border-light p-5" role="form" method="post">
         <p class="h4 mb-4">Add Book</p>
-        <label for="book"></label><input type="text" id="book" class="form-control" placeholder="Book">
-        <label for="quantity"></label><input type="text" id="quantity" class="form-control mb-3"
+        <label for="book"></label><input type="text" name="book" class="form-control" placeholder="Book">
+        <label for="quantity"></label><input type="text" name="quantity" class="form-control mb-3"
                                              placeholder="No. of copies">
-        <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Author(s)</p>
+        <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Select Author(s)</p>
         <?php
         include("get_author.php");
         ?>
-        <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Category(s)</p>
+        <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Select Category(s)</p>
         <?php
         include("get_category.php");
         ?>

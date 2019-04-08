@@ -1,34 +1,25 @@
 <?php
-//session_start();
-//error_reporting(0);
-//include('includes/config.php');
-//if(strlen($_SESSION['alogin'])==0)
-//{
-//    header('location:index.php');
-//}
-//else{
-//
-//    if(isset($_POST['create']))
-//    {
-//        $author=$_POST['author'];
-//        $sql="INSERT INTO  tblauthors(AuthorName) VALUES(:author)";
-//        $query = $dbh->prepare($sql);
-//        $query->bindParam(':author',$author,PDO::PARAM_STR);
-//        $query->execute();
-//        $lastInsertId = $dbh->lastInsertId();
-//        if($lastInsertId)
-//        {
-//            $_SESSION['msg']="Author Listed successfully";
-//            header('location:manage-authors.php');
-//        }
-//        else
-//        {
-//            $_SESSION['error']="Something went wrong. Please try again";
-//            header('location:manage-authors.php');
-//        }
-//
-//    }
-//    ?>
+include('includes/config.php');
+if ($_POST['author'] !== null) {
+    $author = $_POST['author'];
+    $sql = "INSERT INTO author(name) VALUES ('" . $author . "');";
+    if ($conn->query($sql) === TRUE) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Your author has been successfully added
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    } else {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong> '.$conn->error.' 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
@@ -36,7 +27,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta name="description" content=""/>
     <meta name="author" content=""/>
-    <title>Online Library Management System | Add Author</title>
+    <title>Online Library Management System | Add author</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" rel="stylesheet">
@@ -51,13 +42,14 @@
 <br>
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
-    <form class="text-center border border-light p-5">
+    <form class="text-center border border-light p-5" method="post" role="form">
         <p class="h4 mb-4">Add Author</p>
-        <label for="author"></label><input type="text" id="author" class="form-control mb-4" placeholder="Name">
+        <label for="author"></label><input type="text" name="author" class="form-control mb-4"
+                                             placeholder="Author">
 
         <!-- Sign in button -->
         <div class="btn-group" style="float: left">
-            <button style="float: left" class="btn btn-default" type="submit">Cancel</button>
+            <button style="float: left" class="btn btn-default" onclick="goBack()">Cancel</button>
         </div>
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Author</button>
@@ -66,6 +58,12 @@
         <br>
     </form>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 <div class="col-md-3"></div>
 <!-- Default form subscription -->
 <!-- CONTENT-WRAPPER SECTION END-->

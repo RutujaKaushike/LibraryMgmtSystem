@@ -1,34 +1,25 @@
 <?php
-//session_start();
-//error_reporting(0);
-//include('includes/config.php');
-//if(strlen($_SESSION['alogin'])==0)
-//{
-//    header('location:index.php');
-//}
-//else{
-//
-//    if(isset($_POST['create']))
-//    {
-//        $author=$_POST['author'];
-//        $sql="INSERT INTO  tblauthors(AuthorName) VALUES(:author)";
-//        $query = $dbh->prepare($sql);
-//        $query->bindParam(':author',$author,PDO::PARAM_STR);
-//        $query->execute();
-//        $lastInsertId = $dbh->lastInsertId();
-//        if($lastInsertId)
-//        {
-//            $_SESSION['msg']="Author Listed successfully";
-//            header('location:manage-authors.php');
-//        }
-//        else
-//        {
-//            $_SESSION['error']="Something went wrong. Please try again";
-//            header('location:manage-authors.php');
-//        }
-//
-//    }
-//    ?>
+include('includes/config.php');
+if ($_POST['category'] !== null) {
+    $category = $_POST['category'];
+    $sql = "INSERT INTO category(name) VALUES ('" . $category . "');";
+    if ($conn->query($sql) === TRUE) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Your category has been successfully added
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    } else {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong> '.$conn->error.' 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
@@ -51,13 +42,14 @@
 <br>
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
-    <form class="text-center border border-light p-5">
+    <form class="text-center border border-light p-5" method="post" role="form">
         <p class="h4 mb-4">Add Category</p>
-        <label for="category"></label><input type="text" id="category" class="form-control mb-4" placeholder="Category">
+        <label for="category"></label><input type="text" name="category" class="form-control mb-4"
+                                             placeholder="Category">
 
         <!-- Sign in button -->
         <div class="btn-group" style="float: left">
-            <button style="float: left" class="btn btn-default" type="submit">Cancel</button>
+            <button style="float: left" class="btn btn-default" onclick="goBack()">Cancel</button>
         </div>
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Category</button>
@@ -66,6 +58,12 @@
         <br>
     </form>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 <div class="col-md-3"></div>
 <!-- Default form subscription -->
 <!-- CONTENT-WRAPPER SECTION END-->

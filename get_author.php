@@ -1,6 +1,6 @@
 <div>
             <label>
-        <select class="selectpicker" data-live-search="true" multiple title="Authors">
+        <select class="selectpicker" data-live-search="true" multiple title="Authors" name="author[]">
             <?php
             $username = "root";
             $password = "root";
