@@ -3,17 +3,11 @@
 <head>
     <title>Library Management System</title>
     <?php
-    include("assets/css.php");
+    include ("assets/css.php");
     ?>
-    <style>
-        .carousel-item{
-            height: 400px;
-        }
-    </style>
 </head>
 <body>
-<!-- Navigation Bar Code-->
-<nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
         <img src="assets/img/logo.png" alt="logo" id="logo">
         <div class="navbar-header">
@@ -25,8 +19,7 @@
         </div>
     </div>
 </nav>
-<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
-    <!--Indicators-->
+    <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
         <li data-target="#carousel" data-slide-to="1"></li>
@@ -34,13 +27,13 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="assets/img/1.jpg" alt="First slide">
+            <img class="d-block w-100" src="assets/img/carousel1.jpeg" alt="First slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="assets/img/2.jpg" alt="Second slide">
+            <img class="d-block w-100" src="assets/img/carousel2.jpeg" alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="assets/img/3.jpg" alt="Third slide">
+            <img class="d-block w-100" src="assets/img/carousel3.jpeg" alt="Third slide">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -52,24 +45,32 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-<nav aria-label="Page navigation example">
-    <ul class="pagination pg-blue justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link">1</a></li>
-        <li class="page-item"><a class="page-link">2</a></li>
-        <li class="page-item"><a class="page-link">3</a></li>
-        <li class="page-item">
-            <a class="page-link">Next</a>
-        </li>
-    </ul>
-</nav>
-<!-- Pagination Code Ends here-->
-<?php
-include("register.php");
-include("login.php");
-include("assets/scripts.php");
-?>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pg-blue justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link">1</a></li>
+            <li class="page-item"><a class="page-link">2</a></li>
+            <li class="page-item"><a class="page-link">3</a></li>
+            <li class="page-item">
+                <a class="page-link">Next</a>
+            </li>
+        </ul>
+    </nav>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <?php
+    include ("register.php");
+    include ("login.php");
+    include ("assets/scripts.php");
+    ?>
 </body>
 </html>
