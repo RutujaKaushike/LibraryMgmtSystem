@@ -8,7 +8,7 @@
             $author = "";
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $author = $author . '<option data-tokens="' . $row['author_id'] . '">' . $row['name'] . '</option>';
+                    $author = $author . '<option value="' . $row['author_id'] . '">' . $row['name'] . '</option>';
                 }
             }
             echo $author;
