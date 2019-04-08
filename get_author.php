@@ -1,11 +1,8 @@
 <div>
-            <label>
+    <label>
         <select class="selectpicker" data-live-search="true" multiple title="Authors" name="author[]">
             <?php
-            $username = "root";
-            $password = "root";
-            $database = "library";
-            $conn = new mysqli("localhost", $username, $password, $database);
+            include ("assets/config.php");
             $query = "select * from author;";
             $result = mysqli_query($conn, $query);
             $author = "";
