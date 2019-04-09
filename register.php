@@ -1,7 +1,27 @@
 <?php
 include('assets/config.php');
-if (isset($_POST['fgtemail']) && isset($_POST['fgtcontact'])) {
-    $_POST = "";
+if (isset($_POST['email']) && isset($_POST['name'])) {
+    $email = $_POST['email'];
+    $name = $_POST['name'];
+    $password = md5($_POST['password']);
+    $contact = $_POST['contact'];
+    $sql = "Insert into student (name, email, password, contact) values ('" . $name . "', '" . $email . "', '".$password."',".$contact.");";
+    echo $sql;
+    if ($conn->query($sql) === TRUE) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> You have been registered. Please be patient till admin activates your account
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    } else {
+        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong> ' . $conn->error . ' 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+    }
 }
 ?>
 <div class="modal fade" id="RegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -65,35 +85,41 @@ if (isset($_POST['fgtemail']) && isset($_POST['fgtcontact'])) {
             success: function (data) {
                 if (data === "True"){
                     $("#userAvailabilityStatus").text("Email available for Registration").css("color", "green");
-                    $("#email")[0].setCustomValidity('');
-                    $("#submit")[0].disable = false;
+                    $("#email").get(0).setCustomValidity('');
+                    $("#submit").get(0).disable = false;
+                }
+                else if (data === "Error"){
+                    $("#userAvailabilityStatus").text("Please check your email").css("color", "red");
+                    $("#email").get(0).setCustomValidity("Please check your email");
+                    $("#submit").get(0).disable = true;
                 }
                 else{
                     $("#userAvailabilityStatus").text("Email already exists").css("color", "red");
-                    $("#email")[0].setCustomValidity("Email already exists");
-                    $("#submit")[0].disable = true;
+                    $("#email").get(0).setCustomValidity("Email already exists");
+                    $("#submit").get(0).disable = true;
                 }
             },
             error: function () {
             }
         });
     }
+
 </script>
 <script>
-    const password = document.getElementById("pass")
-        , confirm_password = document.getElementById("cfrmpass")
-        , resetbtn = document.getElementById("submit");
+    const passwd = document.getElementById("pass")
+        , cfrm_passwd = document.getElementById("cfrmpass")
+        , submitbtn = document.getElementById("submit");
 
     function validatePassword() {
-        if (password.value !== confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
-            resetbtn.disable = true;
+        if (passwd.value !== cfrm_passwd.value) {
+            cfrm_passwd.setCustomValidity("Passwords Don't Match");
+            submitbtn.disable = true;
         } else {
-            confirm_password.setCustomValidity('');
-            resetbtn.disable = false;
+            cfrm_passwd.setCustomValidity('');
+            submitbtn.disable = false;
         }
     }
 
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
+    passwd.onchange = validatePassword;
+    cfrm_passwd.onkeyup = validatePassword;
 </script>

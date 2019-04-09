@@ -7,10 +7,10 @@ if (isset($_POST['fgtemail']) && isset($_POST['fgtcontact'])) {
     $sql = "SELECT * FROM student WHERE email='" . $email . "' and contact='" . $mobile . "';";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
-        $sql = "update student set password='" . $newpassword . "' WHERE email='" . $email . "' and contact='" . $mobile . "';";
+        $sql = "update student set passwd='" . $newpassword . "' WHERE email='" . $email . "' and contact='" . $mobile . "';";
         if ($conn->query($sql) === TRUE) {
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> The password has been successfully reset
+  <strong>Success!</strong> The passwd has been successfully reset
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
