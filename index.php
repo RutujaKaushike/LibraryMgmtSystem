@@ -45,32 +45,65 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination pg-blue justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link">1</a></li>
-            <li class="page-item"><a class="page-link">2</a></li>
-            <li class="page-item"><a class="page-link">3</a></li>
-            <li class="page-item">
-                <a class="page-link">Next</a>
-            </li>
-        </ul>
-    </nav>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div>
+        <table class="table" id="table"> <tr>
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "root";
+    $dbname = "library";
+    $rec_limit = 10;
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM books";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+
+//        echo "<table><tr>";
+        $i=0;
+
+        while($row = $result->fetch_assoc()) {
+
+            echo "<td><img src='assets/img/bookcover/".$row["image"]."' height='320px' width='200px'/></td>";
+            $i++;
+            if($i%6==0)
+            {
+                echo "</tr>";
+                $i=0;
+                echo "<tr>";
+            }
+        }
+//        echo "</tr></table>";
+    }
+
+    else {
+        echo "0 results";
+    }
+
+    $conn->close();
+    ?>
+            </tr></table>
+
+    </div>
     <?php
     include ("register.php");
     include ("login.php");
     include ("assets/scripts.php");
     ?>
+
+    <script>
+        $(document).ready(function () {
+            $('#table').DataTable();
+            $('.dataTables_length').addClass('bs-select');
+        });
+</script>
 </body>
 </html>
