@@ -1,10 +1,35 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Library Management System</title>
+    <link rel="stylesheet" href="assets/css/font-awesome.css">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <?php
     include ("assets/css.php");
     ?>
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/css/mdb.min.css" rel="stylesheet">
+
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.6/js/mdb.min.js"></script>
+
+
+
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -48,6 +73,7 @@
 
     <div>
         <table class="table" id="table"> <tr>
+
     <?php
     $servername = "localhost";
     $username = "root";
@@ -67,12 +93,14 @@
 
     if ($result->num_rows > 0) {
 
-//        echo "<table><tr>";
+
         $i=0;
 
         while($row = $result->fetch_assoc()) {
 
-            echo "<td><img src='assets/img/bookcover/".$row["image"]."' height='320px' width='200px'/></td>";
+            echo "<td><img data-toggle='modal' data-target='#objectInfo' id=''".$row["isbn"]."' src='assets/img/bookcover/".$row["image"]."' height='320px' width='200px' onclick='myFunction(".$row["isbn"].")' /></td>";
+
+
             $i++;
             if($i%6==0)
             {
@@ -81,7 +109,7 @@
                 echo "<tr>";
             }
         }
-//        echo "</tr></table>";
+
     }
 
     else {
@@ -90,20 +118,55 @@
 
     $conn->close();
     ?>
-            </tr></table>
+            </tr>
+        </table>
 
     </div>
+
+
+
     <?php
+
     include ("register.php");
     include ("login.php");
     include ("assets/scripts.php");
+    include("objectInfo.php");
+
     ?>
 
+<!--    <script>-->
+<!--        $(document).ready(function () {-->
+<!--            $('#table').DataTable();-->
+<!--            $('.dataTables_length').addClass('bs-select');-->
+<!--        });-->
+<!--    </script>-->
+
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+
     <script>
-        $(document).ready(function () {
-            $('#table').DataTable();
-            $('.dataTables_length').addClass('bs-select');
-        });
-</script>
+     function myFunction(objId)
+    {
+        // $(location).attr('href','objectInfo.php?p='+objId);
+
+        alert('Inside My Function'+ objId);
+
+        jQuery.ajax({
+            url: 'objectInfo.php',
+            data: 'p='+objId,
+            type: 'POST',
+            success: function(result){
+                $("body").append(result);
+            }});
+
+    } </script>
+
 </body>
+
 </html>
