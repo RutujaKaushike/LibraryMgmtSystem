@@ -77,7 +77,10 @@ if (isset($_POST['_id'])) {
             </thead>
             <tbody>
             <?php
-            $query = "select * from student where student_id>999;";
+            $query = "select * from student where student_id>999";
+            if ($_GET['q'] == "inactive") {
+                $query = $query . " and isactive=0;";
+            }
             $result = mysqli_query($conn, $query);
             $category = "";
             if (mysqli_num_rows($result) > 0) {
