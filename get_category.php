@@ -1,12 +1,9 @@
-<!--<script>$(function() {-->
-<!--        $('.selectpicker').selectpicker();-->
-<!--    });</script>-->
 <div>
     <label>
-        <select class="selectpicker" data-live-search="true" multiple title="Categories" name="category[]">
+        <select class="pretty-dropdown-demo" multiple title="Categories" name="category[]">
             <?php
             include ("assets/config.php");
-            $query = "select * from category;";
+            $query = "select * from category order by name;";
             $result = mysqli_query($conn, $query);
             $category = "";
             if (mysqli_num_rows($result) > 0) {

@@ -1,9 +1,12 @@
+<head>
+<link rel="stylesheet" href="assets/css/prettydropdowns.css">
+</head>
 <div>
     <label>
-        <select class="selectpicker" data-live-search="true" multiple title="Authors" name="author[]">
+        <select class="pretty-dropdown-demo" multiple title="Authors" name="author[]">
             <?php
             include ("assets/config.php");
-            $query = "select * from author;";
+            $query = "select * from author order by name;";
             $result = mysqli_query($conn, $query);
             $author = "";
             if (mysqli_num_rows($result) > 0) {

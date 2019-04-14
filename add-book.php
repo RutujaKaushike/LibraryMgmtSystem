@@ -58,6 +58,11 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     <?php
     include("assets/css.php");
     ?>
+    <style>
+        ul{
+            height: 300px!important;
+        }
+    </style>
 </head>
 <body>
 <br>
@@ -101,8 +106,13 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
 <div class="col-md-3"></div>
 <?php
 include("assets/scripts.php")
-
 ?>
+<script src="assets/js/jquery.prettydropdowns.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.pretty-dropdown-demo').prettyDropdown();
+    });
+</script>
 <!--    --><?php //include('includes/footer.php');?>
 </body>
 </html>
