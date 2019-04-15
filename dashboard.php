@@ -87,7 +87,7 @@ $noBookIssue = mysqli_num_rows($result) + 10;
         </div>
         <div class="col-md-4 col-sm-4 rscol-xs-6">
             <div class="alert alert-info back-widget-set text-center"
-                 onclick="location.href='manage-categories.php">
+                 onclick="location.href='manage-categories.php'">
                 <i class="far fa-newspaper fa-8x"></i>
                 <h3><?php echo $noCategory; ?></h3>
                 Listed Categories

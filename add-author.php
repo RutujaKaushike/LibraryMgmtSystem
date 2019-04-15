@@ -44,7 +44,7 @@ if ($_POST['author'] !== null || $_POST['author'] != "") {
                                              id="author" placeholder="Author">
 
         <div class="btn-group" style="float: left">
-            <button type="button" style="float: left" class="btn btn-default" onclick="goBack()">Cancel</button>
+            <button type="button" style="float: left" class="btn btn-default" onclick="location.href = 'manage-authors.php'">Cancel</button>
         </div>
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Author</button>

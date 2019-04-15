@@ -59,6 +59,8 @@ if (isset($_POST['_id'])) {
 <br>
 <div class="col-md-2"></div>
 <div class="container container-fluid col-md-8">
+    <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = 'dashboard.php'">
+        <i class="fas fa-long-arrow-alt-left fa-2x"></i></button>
     <div class="text-center border border-light p-5">
         <p class="h4 mb-4">Manage Students</p>
         <table id="students" class="table table-striped table-bordered">
