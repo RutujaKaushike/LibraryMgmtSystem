@@ -45,7 +45,8 @@ $noBookIssue = mysqli_num_rows($result) + 10;
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-6">
-                <div class="alert alert-success back-widget-set text-center">
+                <div class="alert alert-success back-widget-set text-center"
+                     onclick="location.href='manage-books.php'">
                     <i class="fa fa-book fa-8x"></i>
                     <h3><?php echo $noBooks; ?></h3>
                     Books Listed
@@ -55,7 +56,7 @@ $noBookIssue = mysqli_num_rows($result) + 10;
                 <div class="alert alert-info back-widget-set text-center">
                     <i class="fa fa-bars fa-8x"></i>
                     <h3><?php echo $noBookIssue; ?></h3>
-                    Book Issue Requests
+                    Book Issue/ Return Requests
                 </div>
             </div>
             <div class="col-md-4 col-sm-4 col-xs-6">
