@@ -1,7 +1,14 @@
 <?php
+$get_isbn = $_GET['_id'];
+include("assets/config.php");
+$sql = "select * from books where isbn='" . $get_isbn . "';";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$get_name = $row['name'];
+$get_image = $row['image'];
+$get_copies = $row['no_of_copies'];
 if (isset($_POST["author"]) && isset($_POST["category"])) {
-    include("assets/config.php");
-    $isbn = $_POST['isbn'];
+    $isbn = $_POST["isbn"];
     $book = $_POST['book'];
     $copies = $_POST['quantity'];
     $file = $_FILES["file"]["name"];
@@ -36,7 +43,7 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     if ($uploadOk) {
         move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> The book has been successfully added
+  <strong>Success!</strong> The book has been successfully updated
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -54,13 +61,13 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <title>Online Library Management System | Add Book</title>
+    <title>Online Library Management System | Update Book</title>
     <?php
     include("assets/css.php");
     ?>
     <style>
-        ul{
-            height: 300px!important;
+        ul {
+            height: 300px !important;
         }
     </style>
 </head>
@@ -73,19 +80,22 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     <form class="text-center border border-light p-5" role="form" method="post" enctype="multipart/form-data">
         <p class="h4 mb-4">Add Book</p>
         <label for="isbn"></label>
-        <input required type="number" name="isbn" class="form-control" placeholder="ISBN of Book" id="isbn">
+        <input type="number" name="isbn" class="form-control" value="<?php echo $get_isbn ?>" id="isbn"
+               disabled>
         <label for="book"></label>
-        <input required type="text" name="book" class="form-control" placeholder="Name of Book" id="book">
+        <input type="text" name="book" class="form-control" value="<?php echo $get_name ?>" id="book">
         <label for="quantity"></label>
-        <input required type="text" name="quantity" class="form-control mb-3" id="quantity" placeholder="No. of copies">
+        <input type="text" name="quantity" class="form-control mb-3" id="quantity"
+               value="<?php echo $get_copies ?>">
         <div class="input-default-wrapper mt-3">
             <span class="input-group-text mb-3" id="input1">Upload Book Cover</span>
-            <input required type="file" id="file" class="input-default-js" name="file">
+            <input type="file" id="file" class="input-default-js" name="file">
             <label class="label-for-default-js rounded-right mb-3" for="file"><span
-                        class="span-choose-file">Choose file</span>
+                        class="span-choose-file"><?php echo $get_image ?></span>
                 <div class="float-right span-browse">Browse</div>
             </label>
         </div>
+        <label for="file_name"></label><input hidden id="file_name" value="<?php echo $get_image ?>" name="file_name">
         <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Select Author(s)</p>
         <?php
         include("get_author.php");
@@ -98,7 +108,7 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
             <button style="float: left" class="btn btn-default" onclick="goBack()">Cancel</button>
         </div>
         <div class="btn-group" style="float: right;">
-            <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Book</button>
+            <button style="clear: right ;float: right" class="btn btn-default" type="submit">Update Book</button>
         </div>
         <br>
     </form>
@@ -109,7 +119,7 @@ include("assets/scripts.php")
 ?>
 <script src="assets/js/jquery.prettydropdowns.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.pretty-dropdown-demo').prettyDropdown();
     });
 </script>
