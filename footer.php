@@ -13,9 +13,9 @@
 </head>
 <body>
 <!-- Footer -->
-<footer class="page-footer font-small grey pt-2 fixed-bottom">
+<footer class="page-footer font-small grey pt-1 fixed-bottom">
 
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <div class="footer-copyright text-center py-2">© 2019 Copyright:
         <a href="https://www.linkedin.com/in/rutujakaushike/"> Rutuja Kaushike</a> & <a href="https://www.linkedin.com/in/sankalpbhandari/"> Sankalp Bhandari </a>
     </div>
 

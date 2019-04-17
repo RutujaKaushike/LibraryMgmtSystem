@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("passwordReset.php");
 if (isset($_POST['loginemail']) && isset($_POST['loginpass'])) {
     $email = $_POST['loginemail'];
@@ -8,11 +7,16 @@ if (isset($_POST['loginemail']) && isset($_POST['loginpass'])) {
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        setcookie("student_id", $row["student_id"]);
-        if ($row["student_id"] == 999) {
-            setcookie("admin", true);
-            $_SESSION["admin"] = true;
+        if ($row['student_id'] == '999') {
+            $user_level = "admin";
+        } else {
+            $user_level = "student";
         }
+        $_SESSION['login'] = array('user' => $row['name'],
+            'id' => $row['student_id'],
+            'user_level' => $user_level);
+        setcookie("login_user", session_id(), time() + (86400 * 7), '/');
+        header('Location: /');
     } else {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>Error!</strong> Login Unsuccessful

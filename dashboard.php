@@ -1,6 +1,6 @@
 <?php
-session_start();
-error_reporting(0);
+include ("header.php");
+include ("footer.php");
 include('assets/config.php');
 $sql = "select * from author";
 $result = $conn->query($sql);
@@ -21,28 +21,10 @@ $sql = "select * from student where isactive=0";
 $result = $conn->query($sql);
 $noBookIssue = mysqli_num_rows($result) + 10;
 ?>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-<head>
-    <title>Online Library Management System | Admin Dashboard</title>
-    <?php
-    include("assets/css.php");
-    ?>
-    <style>
-        .alert {
-            cursor: pointer;
-        }
-    </style>
-</head>
 <body>
-<?php //include('includes/header.php'); ?>
+<br>
 <div class="content-wrapper">
     <div class="container">
-        <div class="row pad-botm">
-            <div class="col-md-12">
-                <h4 class="header-line">ADMIN DASHBOARD</h4>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-4 col-sm-4 col-xs-6">
                 <div class="alert alert-success back-widget-set text-center"
