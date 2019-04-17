@@ -8,15 +8,20 @@
     <link href="assets/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <?php
-    include ("assets/css.php");
+    include("assets/css.php");
     ?>
+    <style>.clear {
+            clear: both;
+            height: 60px;
+        }</style>
 </head>
 <body>
-<!-- Footer -->
+<div class="clear"></div>
 <footer class="page-footer font-small grey pt-1 fixed-bottom">
 
     <div class="footer-copyright text-center py-2">© 2019 Copyright:
-        <a href="https://www.linkedin.com/in/rutujakaushike/"> Rutuja Kaushike</a> & <a href="https://www.linkedin.com/in/sankalpbhandari/"> Sankalp Bhandari </a>
+        <a href="https://www.linkedin.com/in/rutujakaushike/"> Rutuja Kaushike</a> & <a
+                href="https://www.linkedin.com/in/sankalpbhandari/"> Sankalp Bhandari </a>
     </div>
 
 
@@ -24,9 +29,9 @@
 <!-- Footer -->
 
 <?php
-include ("register.php");
-include ("login.php");
-include ("assets/scripts.php");
+include("register.php");
+include("login.php");
+include("assets/scripts.php");
 ?>
 </body>
 </html>
