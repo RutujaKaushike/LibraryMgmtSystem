@@ -1,8 +1,7 @@
 <?php
 include('assets/config.php');
 include("assets/css.php");
-include ("header.php");
-include ("footer.php");
+include("header.php");
 if (strlen($_POST['_id']) > 0) {
     $sql = "delete from authorbook where isbn='" . $_POST['_id'] . "';";
     if ($conn->query($sql) === TRUE) {
@@ -112,6 +111,7 @@ if (strlen($_POST['_id']) > 0) {
 <div class="col-md-2"></div>
 <?php
 include("assets/scripts.php");
+include("footer.php");
 ?>
 <script>
     $(document).ready(function () {

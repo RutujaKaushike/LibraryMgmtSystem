@@ -40,11 +40,13 @@ session_start();
 <div class="dropdown-menu">
   <a class="dropdown-item" href="change-password.php">Change Password</a>';
                 if ($_SESSION['login']['user_level'] != 'admin') {
-                    echo '<a class="dropdown-item" href = "#" > Order History </a >';
+                    echo '<a class="dropdown-item" href = "manage-order.php" > Order History </a >';
                 }
                 echo '<a href="logout.php" class="dropdown-item">Logout</a>
 </div>';
             } else {
+                include("register.php");
+                include("login.php");
                 echo '<div class="btn-group">
                 <a href="#" class="btn btn-default" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
                 <a href="#" class="btn btn-default" data-toggle="modal" data-target="#RegisterForm">Register</a>
@@ -55,8 +57,6 @@ session_start();
     </div>
 </nav>
 <?php
-include("register.php");
-include("login.php");
 include("assets/scripts.php");
 ?>
 </body>
