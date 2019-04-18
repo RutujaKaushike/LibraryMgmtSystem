@@ -2,7 +2,6 @@
 include('assets/config.php');
 include('assets/css.php');
 include ('header.php');
-include ('footer.php');
 if (isset($_POST['changenewpass'])) {
     $student_id = $_COOKIE['student_id'];
     $oldpass = md5($_POST['changeoldpass']);
@@ -68,6 +67,7 @@ if (isset($_POST['changenewpass'])) {
 
 <?php
 include("assets/scripts.php");
+include ('footer.php');
 ?>
 <script>
     const passwd = document.getElementById("changenewpass")
