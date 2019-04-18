@@ -1,6 +1,6 @@
 <?php
-include("assets/css.php");
-include("assets/config.php");
+include_once("assets/css.php");
+include_once("assets/config.php");
 if (isset($_POST['_id'])) {
     $student_id = $_POST['_id'];
     $sql = 'UPDATE student SET isactive = IF(isactive = 1, 0, 1) WHERE student_id = "' . $student_id . '";';
@@ -111,7 +111,7 @@ if (isset($_POST['_id'])) {
 </div>
 <div class="col-md-2"></div>
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 <script>
     $(document).ready(function () {

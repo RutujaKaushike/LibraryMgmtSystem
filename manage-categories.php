@@ -1,6 +1,6 @@
 <?php
-include('assets/config.php');
-include("assets/css.php");
+include_once('assets/config.php');
+include_once("assets/css.php");
 if (strlen($_POST['_id']) > 0) {
     $name = $_POST['category_name'];
     $sql = "update category set name='".$name."' where category_id='" . $_POST['_id'] . "';";
@@ -66,7 +66,7 @@ if (strlen($_POST['_id']) > 0) {
                 </thead>
                 <tbody>
                 <?php
-                include("assets/config.php");
+                include_once("assets/config.php");
                 $query = "select * from category;";
                 $result = mysqli_query($conn, $query);
                 $category = "";
@@ -92,7 +92,7 @@ if (strlen($_POST['_id']) > 0) {
 </div>
 <div class="col-md-3"></div>
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 <form role="form" method="post">
     <div class="modal fade" id="UpdateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

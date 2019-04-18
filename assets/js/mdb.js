@@ -15442,7 +15442,7 @@ var WOW;
             }
 
             if (element.className.indexOf('waves-effect') === -1) {
-                element.className += ' waves-effect' + classes;
+                element.className += classes;
             }
         }
     };

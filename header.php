@@ -10,7 +10,7 @@ session_start();
     <link href="assets/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <?php
-    include("assets/css.php");
+    include_once("assets/css.php");
     ?>
 </head>
 <body>
@@ -25,7 +25,7 @@ session_start();
             <?php
             if ($_SESSION['login']['user_level'] != 'admin') {
                 echo '<div class="nav-item px-2">
-                <a class="nav-link waves-effect">
+                <a class="nav-link">
                     <span class="badge red z-depth-1 mr-1"> 1 </span>
                     <i class="fas fa-shopping-cart"></i>
                     <span class="clearfix d-none d-sm-inline-block"> Cart </span>
@@ -45,8 +45,8 @@ session_start();
                 echo '<a href="logout.php" class="dropdown-item">Logout</a>
 </div>';
             } else {
-                include("register.php");
-                include("login.php");
+                include_once("register.php");
+                include_once("login.php");
                 echo '<div class="btn-group">
                 <a href="#" class="btn btn-default" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
                 <a href="#" class="btn btn-default" data-toggle="modal" data-target="#RegisterForm">Register</a>
@@ -57,7 +57,7 @@ session_start();
     </div>
 </nav>
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 </body>
 </html>

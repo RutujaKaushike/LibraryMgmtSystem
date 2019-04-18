@@ -1,5 +1,5 @@
 <?php
-include("passwordReset.php");
+include_once("passwordReset.php");
 if (isset($_POST['loginemail']) && isset($_POST['loginpass'])) {
     $email = $_POST['loginemail'];
     $password = md5($_POST['loginpass']);
@@ -57,7 +57,7 @@ if (isset($_POST['loginemail']) && isset($_POST['loginpass'])) {
                         <p>Not a member? <a href="" data-dismiss="modal" data-toggle="modal"
                                             data-target="#RegisterForm">Sign Up</a></p>
                         <p>Forgot <a href="" data-dismiss="modal" data-toggle="modal"
-                                     data-target="#PasswordReset">Password?</a></p>
+                                     data-target="#PasswordReset" class="none">Password?</a></p>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <?php
-include('assets/config.php');
+include_once('assets/config.php');
 if ($_POST['author'] !== null || $_POST['author'] != "") {
     $author = $_POST['author'];
     $sql = "INSERT INTO author(name) VALUES ('" . $author . "');";
@@ -29,7 +29,7 @@ if ($_POST['author'] !== null || $_POST['author'] != "") {
     <meta name="author" content=""/>
     <title>Online Library Management System | Add author</title>
     <?php
-    include("assets/css.php");
+    include_once("assets/css.php");
     ?>
 </head>
 <body>
@@ -55,7 +55,7 @@ if ($_POST['author'] !== null || $_POST['author'] != "") {
 </div>
 <div class="col-md-3"></div>
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 </body>
 </html>

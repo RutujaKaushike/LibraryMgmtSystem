@@ -2,7 +2,7 @@
     <label>
         <select class="pretty-dropdown-demo" multiple title="Categories" name="category[]">
             <?php
-            include ("assets/config.php");
+            include_once ("assets/config.php");
             $query = "select * from category order by name;";
             $result = mysqli_query($conn, $query);
             $category = "";

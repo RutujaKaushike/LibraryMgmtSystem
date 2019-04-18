@@ -1,5 +1,5 @@
 <?php
-include("assets/config.php");
+include_once("assets/config.php");
 $sql = "SELECT * FROM books INNER JOIN categorybook on categorybook.isbn=books.isbn where books.isbn=" . $_GET['p'] . ";";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {

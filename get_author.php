@@ -5,7 +5,7 @@
     <label>
         <select class="pretty-dropdown-demo" multiple title="Authors" name="author[]">
             <?php
-            include ("assets/config.php");
+            include_once ("assets/config.php");
             $query = "select * from author order by name;";
             $result = mysqli_query($conn, $query);
             $author = "";

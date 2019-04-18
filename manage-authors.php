@@ -1,6 +1,6 @@
 <?php
-include('assets/config.php');
-include("assets/css.php");
+include_once('assets/config.php');
+include_once("assets/css.php");
 if (strlen($_POST['_id']) > 0) {
     $name = $_POST['author_name'];
     $sql = "update author set name='" . $name . "' where author_id='" . $_POST['_id'] . "';";
@@ -66,7 +66,7 @@ if (strlen($_POST['_id']) > 0) {
                 </thead>
                 <tbody>
                 <?php
-                include("assets/config.php");
+                include_once("assets/config.php");
                 $query = "select * from author;";
                 $result = mysqli_query($conn, $query);
                 $author = "";
@@ -124,7 +124,7 @@ if (strlen($_POST['_id']) > 0) {
 </form>
 
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 <script>
     $(document).ready(function () {

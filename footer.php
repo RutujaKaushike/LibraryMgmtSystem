@@ -8,7 +8,7 @@
     <link href="assets/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <?php
-    include("assets/css.php");
+    include_once("assets/css.php");
     ?>
     <style>.clear {
             clear: both;
@@ -29,9 +29,9 @@
 <!-- Footer -->
 
 <?php
-include("register.php");
-include("login.php");
-include("assets/scripts.php");
+include_once("register.php");
+include_once("login.php");
+include_once("assets/scripts.php");
 ?>
 </body>
 </html>

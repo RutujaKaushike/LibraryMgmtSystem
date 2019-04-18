@@ -1,7 +1,7 @@
 <?php
 $get_isbn = $_GET['_id'];
-include("assets/config.php");
-include("header.php");
+include_once("assets/config.php");
+include_once("header.php");
 $sql = "select * from books where isbn='" . $get_isbn . "';";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -83,7 +83,7 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
 <head>
     <title>Online Library Management System | Update Book</title>
     <?php
-    include("assets/css.php");
+    include_once("assets/css.php");
     ?>
     <style>
         ul {
@@ -172,9 +172,9 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     </form>
 </div>
 <div class="col-md-3"></div>
-<?php include('footer.php'); ?>
+<?php include_once('footer.php'); ?>
 <?php
-include("assets/scripts.php")
+include_once("assets/scripts.php")
 ?>
 <script src="assets/js/jquery.prettydropdowns.js"></script>
 <script>

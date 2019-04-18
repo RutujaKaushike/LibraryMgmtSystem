@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("header.php");
+include_once ("header.php");
 if($_SESSION['login']['user_level'] == 'admin')
     header('Location: dashboard.php');
 ?>
@@ -34,7 +34,7 @@ if($_SESSION['login']['user_level'] == 'admin')
     <table class="table" id="table">
         <tr>
             <?php
-            include("assets/config.php");
+            include_once("assets/config.php");
             $sql = "SELECT * FROM books";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
@@ -72,10 +72,8 @@ if($_SESSION['login']['user_level'] == 'admin')
     </div>
 </div>
 <?php
-include("register.php");
-include("login.php");
-include("assets/scripts.php");
-include ("footer.php");
+include_once("assets/scripts.php");
+include_once ("footer.php");
 ?>
 <script>
     function myFunction(objId) {

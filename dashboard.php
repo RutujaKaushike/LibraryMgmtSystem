@@ -1,6 +1,6 @@
 <?php
-include("header.php");
-include('assets/config.php');
+include_once("header.php");
+include_once('assets/config.php');
 $sql = "select * from author";
 $result = $conn->query($sql);
 $noBooks = mysqli_num_rows($result);
@@ -88,8 +88,8 @@ $noBookIssue = mysqli_num_rows($result);
     </div>
 </div>
 <!-- CONTENT-WRAPPER SECTION END-->
-<?php include('assets/scripts.php');
-include("footer.php");
+<?php include_once('assets/scripts.php');
+include_once("footer.php");
 ?>
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 session_start();
-include('assets/config.php');
-include("assets/css.php");
-include("header.php");
+include_once('assets/config.php');
+include_once("assets/css.php");
+include_once("header.php");
 if (isset($_POST['order_id'])) {
     $sql = "update orders set BookStatus='Return Requested' where orderID=" . $_POST['order_id'];
     $result = $conn->query($sql);
@@ -66,8 +66,8 @@ if (isset($_POST['order_id'])) {
 </div>
 <div class="col-md-2"></div>
 <?php
-include("assets/scripts.php");
-include("footer.php");
+include_once("assets/scripts.php");
+include_once("footer.php");
 ?>
 <script>
     $(document).ready(function () {
