@@ -13,7 +13,7 @@
 <body>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <img src="assets/img/logo.png" alt="logo" id="logo">
+        <img src="assets/img/logo.png" alt="logo" id="logo" >
         <div class="navbar-header">
             <h1>Online Library Service</h1>
         </div>
@@ -69,7 +69,7 @@
                 }
                 $i = 0;
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td><img src='assets/img/bookcover/" . $row["image"] . "' height='300px' width='180px' alt=" . $row["image"] . "/><br>" . $row["name"] . "</td></tr>";
+                    echo "<tr><td><img src='assets/img/bookcover/" . $row["image"] . "' alt=" . $row["image"] . "/><br>" . $row["name"] . "</td></tr>";
                 }
             }
             ?>
@@ -80,7 +80,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Book Info</h4>
+                <h4 class="modal-title w-100 font-weight-bold">Book Information</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -90,6 +90,20 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="CartData" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Cart</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="placeholder1">
+            </div>
+        </div>
+    </div>
 <?php
 include("register.php");
 include("login.php");
@@ -107,11 +121,14 @@ include("assets/scripts.php");
         });
     }
 </script>
+
 <script>
     $(document).ready(function () {
         $('#books').DataTable();
         $('.dataTables_length').addClass('bs-select');
     });
 </script>
+
+
 </body>
 </html>
