@@ -1,4 +1,7 @@
 <?php
+
+include_once("header.php");
+
 include_once('assets/config.php');
 if ($_POST['category'] !== null || $_POST['category'] != "") {
     $category = $_POST['category'];
@@ -52,6 +55,7 @@ if ($_POST['category'] !== null || $_POST['category'] != "") {
 <div class="col-md-3"></div>
 <?php
 include_once("assets/scripts.php");
+include_once("footer.php");
 ?>
 </body>
 </html>

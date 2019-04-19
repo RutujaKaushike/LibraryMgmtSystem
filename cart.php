@@ -31,6 +31,8 @@ for($i=0; $i<count($_SESSION['cartArr']);$i++)
         }
     }
 }
+
+include_once("footer.php");
 ?>
 
 
@@ -49,3 +51,4 @@ for($i=0; $i<count($_SESSION['cartArr']);$i++)
         });
     }
 </script>
+

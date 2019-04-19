@@ -1,37 +1,10 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Library Management System</title>
-    <link rel="stylesheet" href="assets/css/font-awesome.css">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/mdb.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <?php
-    include("assets/css.php");
-    ?>
-</head>
-<body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <img src="assets/img/logo.png" alt="logo" id="logo" >
-        <div class="navbar-header">
-            <h1>Online Library Service</h1>
-        </div>
-        <div class="btn-group">
-            <a href="#" class="btn btn-default" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
-            <a href="#" class="btn btn-default" data-toggle="modal" data-target="#RegisterForm">Register</a>
-        </div>
-    </div>
-</nav>
-=======
 <?php
 session_start();
 include_once ("header.php");
 if($_SESSION['login']['user_level'] == 'admin')
     header('Location: dashboard.php');
 ?>
->>>>>>> 4981c3d1b7fb5f93e2e631311410256ab3f61245
+
 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -113,6 +86,7 @@ if($_SESSION['login']['user_level'] == 'admin')
             </div>
         </div>
     </div>
+</div>
 <?php
 include_once("assets/scripts.php");
 include_once ("footer.php");

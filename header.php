@@ -25,8 +25,8 @@ session_start();
             <?php
             if ($_SESSION['login']['user_level'] != 'admin') {
                 echo '<div class="nav-item px-2">
-                <a class="nav-link">
-                    <span class="badge red z-depth-1 mr-1"> 1 </span>
+                <a class="nav-link" href="cart.php">
+                   
                     <i class="fas fa-shopping-cart"></i>
                     <span class="clearfix d-none d-sm-inline-block"> Cart </span>
                 </a>

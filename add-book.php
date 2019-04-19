@@ -1,4 +1,7 @@
 <?php
+
+include_once("header.php");
+
 if (isset($_POST["author"]) && isset($_POST["category"])) {
     include_once("assets/config.php");
     $isbn = $_POST['isbn'];
@@ -113,6 +116,8 @@ include_once("assets/scripts.php")
         $('.pretty-dropdown-demo').prettyDropdown();
     });
 </script>
-<!--    --><?php //include_once('include_onces/footer.php');?>
+<?php
+include_once('footer.php');
+?>
 </body>
 </html>

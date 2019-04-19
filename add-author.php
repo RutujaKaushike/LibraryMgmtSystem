@@ -1,5 +1,7 @@
 <?php
+include_once("header.php");
 include_once('assets/config.php');
+
 if ($_POST['author'] !== null || $_POST['author'] != "") {
     $author = $_POST['author'];
     $sql = "INSERT INTO author(name) VALUES ('" . $author . "');";
@@ -56,6 +58,7 @@ if ($_POST['author'] !== null || $_POST['author'] != "") {
 <div class="col-md-3"></div>
 <?php
 include_once("assets/scripts.php");
+include_once("footer.php");
 ?>
 </body>
 </html>

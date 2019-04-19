@@ -1,6 +1,8 @@
 <?php
 include_once('assets/config.php');
 include_once("assets/css.php");
+include_once("header.php");
+
 if (strlen($_POST['_id']) > 0) {
     $name = $_POST['category_name'];
     $sql = "update category set name='".$name."' where category_id='" . $_POST['_id'] . "';";
@@ -140,5 +142,8 @@ include_once("assets/scripts.php");
         $('#_id').val(id);
     }
 </script>
+<?php
+include_once("footer.php");
+?>
 </body>
 </html>

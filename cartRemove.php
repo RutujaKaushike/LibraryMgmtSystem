@@ -3,7 +3,6 @@
 include("assets/config.php");
 include("assets/css.php");
 include("assets/scripts.php");
-include_once ("header.php");
 include("cart.php");
 
 
@@ -27,11 +26,9 @@ if(in_array($id,$_SESSION['cartArr']))
 
         echo "<script type='text/javascript'>alert('$message');</script>";
 
-
-
-
-
 }
 
 header('Location:cart.php');
+
+
 
