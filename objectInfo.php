@@ -1,45 +1,10 @@
-<html>
-<head>
-<!--    <style>-->
-<!--        img-->
-<!--        {-->
-<!--            border: 1px solid #ddd;-->
-<!--            border-radius: 4px;-->
-<!--            padding: 5px;-->
-<!--            height: 300px;-->
-<!--            width:180px;-->
-<!--        }-->
-<!--        #BookData-->
-<!--        {-->
-<!--            font-family:"Palatino";-->
-<!--        }-->
-<!---->
-<!--        div-->
-<!--        {-->
-<!--            position: static;-->
-<!--        }-->
-<!--        p-->
-<!--        {-->
-<!--            margin: 10px;-->
-<!--        }-->
-<!--        button-->
-<!--        {-->
-<!--            margin-bottom: 20px;-->
-<!--        }-->
-<!--    </style>-->
-</head>
-<body>
+
 <?php
-<<<<<<< HEAD
 include("assets/config.php");
 $sql = "SELECT * FROM books where books.isbn=" . $_GET['p'] . ";";
 $sqlauthor= "select * from author INNER JOIN authorbook on author.author_id=authorbook.author_id AND authorbook.isbn=" . $_GET['p'].";";
 $sqlcat="select * from category INNER JOIN categorybook on category.category_id=categorybook.category_id AND categorybook.isbn=" . $_GET['p'].";";
 
-=======
-include_once("assets/config.php");
-$sql = "SELECT * FROM books INNER JOIN categorybook on categorybook.isbn=books.isbn where books.isbn=" . $_GET['p'] . ";";
->>>>>>> 4981c3d1b7fb5f93e2e631311410256ab3f61245
 $result = $conn->query($sql);
 $result1 = $conn->query($sqlauthor);
 $result2= $conn->query($sqlcat);
@@ -103,16 +68,13 @@ if ($result->num_rows > 0) {
     function myFunction1(objId)
     {
         jQuery.ajax({
-            url: 'cart.php?p=' + objId,
+            url: 'cartAdd.php?p=' + objId,
             type: 'GET',
             success: function (result) {
-                $("#placeholder1").html(result);
-                $("#CartData").modal("show")
+                $("#placeholder1").html(result)
             }
         });
     }
 </script>
 </body>
 </html>
-
-
