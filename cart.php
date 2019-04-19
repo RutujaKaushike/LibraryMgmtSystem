@@ -13,6 +13,7 @@ include("assets/css.php");
 include("assets/scripts.php");
 include_once ("header.php");
 
+sort($_SESSION['cartArr']);
 
 echo "<table class='table table-striped'><thead><tr><th>No.</th><th>Name</th><th></th></tr></thead>";
 

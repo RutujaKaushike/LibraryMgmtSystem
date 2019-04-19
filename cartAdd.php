@@ -22,12 +22,12 @@ if(in_array($id,$_SESSION['cartArr']))
 else
 {
     array_push($_SESSION['cartArr'],$id);
+    sort($_SESSION['cartArr']);
 
     $message1 = "Successfully added book with ISBN ".$id;
 
     echo "<script type='text/javascript'>alert('$message1');</script>";
 }
-
 
 
 
