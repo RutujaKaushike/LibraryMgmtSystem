@@ -1,6 +1,8 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Library Management System</title>
     <link rel="stylesheet" href="assets/css/font-awesome.css">
@@ -8,35 +10,54 @@
     <link href="assets/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <?php
-    include ("assets/css.php");
+    include_once("assets/css.php");
     ?>
 </head>
 <body>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <img src="assets/img/logo.png" alt="logo" id="logo">
+        <a href="/">
+            <img src="assets/img/logo.png" alt="logo" id="logo"></a>
         <div class="navbar-header">
             <h1>Online Library Service</h1>
         </div>
-        <ul class="navbar-nav nav-flex-icons">
-            <li class="nav-item">
-                <a class="nav-link waves-effect">
+        <div class="navbar-nav nav-flex-icons" style="float: right">
+            <?php
+            if ($_SESSION['login']['user_level'] != 'admin') {
+                echo '<div class="nav-item px-2">
+                <a class="nav-link">
                     <span class="badge red z-depth-1 mr-1"> 1 </span>
                     <i class="fas fa-shopping-cart"></i>
                     <span class="clearfix d-none d-sm-inline-block"> Cart </span>
                 </a>
-            </li>
-        <div class="btn-group">
-            <a href="#" class="btn btn-default" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
-            <a href="#" class="btn btn-default" data-toggle="modal" data-target="#RegisterForm">Register</a>
+            </div>';
+            }
+            if (isset($_SESSION['login'])) {
+                echo '<div class="btn-group">
+            <button class="btn btn-default dropdown-toggle mr-4" type="button" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false">Hi ' . $_SESSION['login']['user'] . '</button>
+  
+<div class="dropdown-menu">
+  <a class="dropdown-item" href="change-password.php">Change Password</a>';
+                if ($_SESSION['login']['user_level'] != 'admin') {
+                    echo '<a class="dropdown-item" href = "manage-order.php" > Order History </a >';
+                }
+                echo '<a href="logout.php" class="dropdown-item">Logout</a>
+</div>';
+            } else {
+                include_once("register.php");
+                include_once("login.php");
+                echo '<div class="btn-group">
+                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
+                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#RegisterForm">Register</a>
+            </div>';
+            }
+            ?>
         </div>
     </div>
 </nav>
 <?php
-include ("register.php");
-include ("login.php");
-include ("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 </body>
 </html>
-

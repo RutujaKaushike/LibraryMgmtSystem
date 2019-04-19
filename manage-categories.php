@@ -1,11 +1,12 @@
 <?php
-include('assets/config.php');
-include("assets/css.php");
+include_once('assets/config.php');
+include_once("assets/css.php");
 if (strlen($_POST['_id']) > 0) {
-    $sql = "delete from category where category_id='" . $_POST['_id'] . "';";
+    $name = $_POST['category_name'];
+    $sql = "update category set name='".$name."' where category_id='" . $_POST['_id'] . "';";
     if ($conn->query($sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong>The category has been successfully deleted
+  <strong>Success!</strong>The category has been successfully updated
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -49,7 +50,9 @@ if (strlen($_POST['_id']) > 0) {
         <i class="fas fa-long-arrow-alt-left fa-lg"></i></button>
     <div class="text-center border border-light p-5">
         <p class="h4 mb-4">Manage Categories</p>
-        <button style="float: right" class="btn btn-default btn-md" type="button" onclick="location.href = 'add-category.php'">Add Category</button>
+        <button style="float: right" class="btn btn-default btn-md" type="button"
+                onclick="location.href = 'add-category.php'">Add Category
+        </button>
         <div>
             <table id="categories" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
@@ -63,7 +66,7 @@ if (strlen($_POST['_id']) > 0) {
                 </thead>
                 <tbody>
                 <?php
-                include("assets/config.php");
+                include_once("assets/config.php");
                 $query = "select * from category;";
                 $result = mysqli_query($conn, $query);
                 $category = "";
@@ -71,22 +74,12 @@ if (strlen($_POST['_id']) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $category = $category . '<tr><td>' . $row['category_id'] . '</td><td><div class="md-form mb-1 mt-1">
   <input type="text" class="form-control" disabled>
-  <label for="inputDisabledEx" class="disabled">' . $row['name'] . '</label>
+  <label for="inputDisabledEx" class="disabled">' . ucfirst($row['name']) . '</label>
 </div></td>
 <td style="padding-top: 10px"><div style="float: left">
-<form action="edit.php" method="post">
-<button type="submit" class="btn-gray btn-sm"><i
-                            class="fas fa-edit"></i></button>
-                            <input type="hidden" value=' . $row['category_id'] . ' name="_id"/>
-                            <input type="hidden" value="category" name="type"/>
-</form></div>
-<div style="float: left">
-<form action="" method="post">
-<button type="submit" class="btn-gray btn-sm"
-                            onclick="return confirm(\'Are you sure you want to delete?\');"
-                            ><i class="fa fa-trash"></i></button>
-                             <input type="hidden" value=' . $row['category_id'] . ' name="_id"/>
-</form></div></td></tr>';
+<button type="button" class="btn-gray btn-sm" onclick="update(' . $row['category_id'] . ', \'' . ucfirst($row['name']) . '\')"><i
+                            class="fas fa-edit"></i></button>          
+</div>';
                     }
                 }
                 echo $category;
@@ -99,13 +92,53 @@ if (strlen($_POST['_id']) > 0) {
 </div>
 <div class="col-md-3"></div>
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
+<form role="form" method="post">
+    <div class="modal fade" id="UpdateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Update Category</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form">
+                        <span>Category ID</span>
+                        <input type="text" id="category_id" class="form-control validate" name="category_id" disabled>
+                        <label for="category_id"></label>
+                    </div>
+                    <div class="md-form mb-1">
+                        <span>Category Name</span>
+                        <input type="text" id="category_name" class="form-control validate" name="category_name">
+                        <label for="category_name"></label>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-default" type="submit">Update Category</button>
+                    </div>
+                    <input type="hidden" id="_id" class="form-control validate" name="_id">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 <script>
     $(document).ready(function () {
         $('#categories').DataTable();
         $('.dataTables_length').addClass('bs-select');
     });
+</script>
+<script>
+    function update(id, name) {
+        $('#UpdateForm').modal('show');
+        $('#category_name').val(name);
+        $('#category_id').val(id);
+        $('#_id').val(id);
+    }
 </script>
 </body>
 </html>

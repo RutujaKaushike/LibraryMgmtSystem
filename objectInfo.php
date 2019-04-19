@@ -30,11 +30,16 @@
 </head>
 <body>
 <?php
+<<<<<<< HEAD
 include("assets/config.php");
 $sql = "SELECT * FROM books where books.isbn=" . $_GET['p'] . ";";
 $sqlauthor= "select * from author INNER JOIN authorbook on author.author_id=authorbook.author_id AND authorbook.isbn=" . $_GET['p'].";";
 $sqlcat="select * from category INNER JOIN categorybook on category.category_id=categorybook.category_id AND categorybook.isbn=" . $_GET['p'].";";
 
+=======
+include_once("assets/config.php");
+$sql = "SELECT * FROM books INNER JOIN categorybook on categorybook.isbn=books.isbn where books.isbn=" . $_GET['p'] . ";";
+>>>>>>> 4981c3d1b7fb5f93e2e631311410256ab3f61245
 $result = $conn->query($sql);
 $result1 = $conn->query($sqlauthor);
 $result2= $conn->query($sqlcat);

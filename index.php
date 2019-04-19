@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +24,14 @@
         </div>
     </div>
 </nav>
+=======
+<?php
+session_start();
+include_once ("header.php");
+if($_SESSION['login']['user_level'] == 'admin')
+    header('Location: dashboard.php');
+?>
+>>>>>>> 4981c3d1b7fb5f93e2e631311410256ab3f61245
 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -53,7 +62,7 @@
     <table class="table" id="table">
         <tr>
             <?php
-            include("assets/config.php");
+            include_once("assets/config.php");
             $sql = "SELECT * FROM books";
             $result = $conn->query($sql);
             if ($result->num_rows > 0) {
@@ -105,9 +114,8 @@
         </div>
     </div>
 <?php
-include("register.php");
-include("login.php");
-include("assets/scripts.php");
+include_once("assets/scripts.php");
+include_once ("footer.php");
 ?>
 <script>
     function myFunction(objId) {

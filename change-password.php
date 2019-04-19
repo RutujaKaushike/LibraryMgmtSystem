@@ -1,6 +1,7 @@
 <?php
-include('assets/config.php');
-include('assets/css.php');
+include_once('assets/config.php');
+include_once('assets/css.php');
+include_once ('header.php');
 if (isset($_POST['changenewpass'])) {
     $student_id = $_COOKIE['student_id'];
     $oldpass = md5($_POST['changeoldpass']);
@@ -37,6 +38,8 @@ if (isset($_POST['changenewpass'])) {
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="border border-light p-5" method="post" role="form">
+        <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="window.history.go(-1)">
+            <i class="fas fa-long-arrow-alt-left fa-lg"></i></button>
         <p class="h4 text-center mb-4">Change Password</p>
         <div class="md-form">
             <i class="fas fa-lock prefix grey-text"></i>
@@ -63,7 +66,8 @@ if (isset($_POST['changenewpass'])) {
 </div>
 
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
+include_once ('footer.php');
 ?>
 <script>
     const passwd = document.getElementById("changenewpass")

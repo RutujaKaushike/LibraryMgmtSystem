@@ -1,5 +1,5 @@
 <?php
-include('assets/config.php');
+include_once('assets/config.php');
 if (isset($_POST['fgtemail']) && isset($_POST['fgtcontact'])) {
     $email = $_POST['fgtemail'];
     $mobile = $_POST['fgtcontact'];

@@ -1,5 +1,5 @@
 <?php
-include('assets/config.php');
+include_once('assets/config.php');
 if (isset($_POST['email']) && isset($_POST['name'])) {
     $email = $_POST['email'];
     $name = $_POST['name'];

@@ -1,5 +1,5 @@
 <?php
-include('assets/config.php');
+include_once('assets/config.php');
 if ($_POST['category'] !== null || $_POST['category'] != "") {
     $category = $_POST['category'];
     $sql = "INSERT INTO category(name) VALUES ('" . $category . "');";
@@ -25,7 +25,7 @@ if ($_POST['category'] !== null || $_POST['category'] != "") {
 <head>
     <title>Online Library Management System | Add Category</title>
     <?php
-    include("assets/css.php");
+    include_once("assets/css.php");
     ?>
 </head>
 <body>
@@ -51,7 +51,7 @@ if ($_POST['category'] !== null || $_POST['category'] != "") {
 </div>
 <div class="col-md-3"></div>
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 </body>
 </html>

@@ -1,11 +1,12 @@
 <?php
-include('assets/config.php');
-include("assets/css.php");
+include_once('assets/config.php');
+include_once("assets/css.php");
 if (strlen($_POST['_id']) > 0) {
-    $sql = "delete from author where author_id='" . $_POST['_id'] . "';";
+    $name = $_POST['author_name'];
+    $sql = "update author set name='" . $name . "' where author_id='" . $_POST['_id'] . "';";
     if ($conn->query($sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong>The author has been successfully deleted
+  <strong>Success!</strong> The author has been successfully updated
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -23,7 +24,7 @@ if (strlen($_POST['_id']) > 0) {
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <title>Online Library Management System | Manage Category</title>
+    <title>Online Library Management System | Manage Author</title>
     <style>
         table.table td, table.table th {
             padding-top: 1px;
@@ -49,7 +50,9 @@ if (strlen($_POST['_id']) > 0) {
         <i class="fas fa-long-arrow-alt-left fa-3px"></i></button>
     <div class="text-center border border-light p-5">
         <p class="h4 mb-4">Manage Authors</p>
-        <button style="float: right" class="btn btn-default btn-md" type="button" onclick="location.href = 'add-author.php'">Add Author</button>
+        <button style="float: right" class="btn btn-default btn-md" type="button"
+                onclick="location.href = 'add-author.php'">Add Author
+        </button>
         <div>
             <table id="authors" class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
@@ -63,7 +66,7 @@ if (strlen($_POST['_id']) > 0) {
                 </thead>
                 <tbody>
                 <?php
-                include("assets/config.php");
+                include_once("assets/config.php");
                 $query = "select * from author;";
                 $result = mysqli_query($conn, $query);
                 $author = "";
@@ -71,22 +74,12 @@ if (strlen($_POST['_id']) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         $author = $author . '<tr><td>' . $row['author_id'] . '</td><td><div class="md-form mb-1 mt-1">
   <input type="text" class="form-control" disabled>
-  <label for="inputDisabledEx" class="disabled">' . $row['name'] . '</label>
+  <label for="inputDisabledEx" class="disabled">' . ucfirst($row['name']) . '</label>
 </div></td>
 <td style="padding-top: 10px"><div style="float: left">
-<form action="edit.php" method="post">
-<button type="submit" class="btn-gray btn-sm"><i
-                            class="fas fa-edit"></i></button>
-                            <input type="hidden" value=' . $row['author_id'] . ' name="_id"/>
-                            <input type="hidden" value="author" name="type"/>
-</form></div>
-<div style="float: left">
-<form action="" method="post">
-<button type="submit" class="btn-gray btn-sm"
-                            onclick="return confirm(\'Are you sure you want to delete?\');"
-                            ><i class="fa fa-trash"></i></button>
-                             <input type="hidden" value=' . $row['author_id'] . ' name="_id"/>
-</form></div></td></tr>';
+<button type="button" class="btn-gray btn-sm" onclick="update(' . $row['author_id'] . ', \'' . ucfirst($row['name']) . '\')"><i
+                            class="fas fa-edit"></i></button>          
+</div>';
                     }
                 }
                 echo $author;
@@ -98,14 +91,54 @@ if (strlen($_POST['_id']) > 0) {
     </div>
 </div>
 <div class="col-md-3"></div>
+<form role="form" method="post">
+    <div class="modal fade" id="UpdateForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Update Author</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form">
+                        <span>Author ID</span>
+                        <input type="text" id="author_id" class="form-control validate" name="author_id" disabled>
+                        <label for="author_id"></label>
+                    </div>
+                    <div class="md-form mb-1">
+                        <span>Author Name</span>
+                        <input type="text" id="author_name" class="form-control validate" name="author_name">
+                        <label for="author_name"></label>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-default" type="submit">Update Author</button>
+                    </div>
+                    <input type="hidden" id="_id" class="form-control validate" name="_id">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
 <?php
-include("assets/scripts.php");
+include_once("assets/scripts.php");
 ?>
 <script>
     $(document).ready(function () {
         $('#authors').DataTable();
         $('.dataTables_length').addClass('bs-select');
     });
+</script>
+<script>
+    function update(id, name) {
+        $('#UpdateForm').modal('show');
+        $('#author_name').val(name);
+        $('#author_id').val(id);
+        $('#_id').val(id);
+    }
 </script>
 </body>
 </html>

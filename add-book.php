@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST["author"]) && isset($_POST["category"])) {
-    include("assets/config.php");
+    include_once("assets/config.php");
     $isbn = $_POST['isbn'];
     $book = $_POST['book'];
     $copies = $_POST['quantity'];
@@ -56,7 +56,7 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
 <head>
     <title>Online Library Management System | Add Book</title>
     <?php
-    include("assets/css.php");
+    include_once("assets/css.php");
     ?>
     <style>
         ul{
@@ -88,11 +88,11 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
         </div>
         <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Select Author(s)</p>
         <?php
-        include("get_author.php");
+        include_once("get_author.php");
         ?>
         <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Select Category(s)</p>
         <?php
-        include("get_category.php");
+        include_once("get_category.php");
         ?>
         <div class="btn-group" style="float: left">
             <button style="float: left" class="btn btn-default" onclick="goBack()">Cancel</button>
@@ -105,7 +105,7 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
 </div>
 <div class="col-md-3"></div>
 <?php
-include("assets/scripts.php")
+include_once("assets/scripts.php")
 ?>
 <script src="assets/js/jquery.prettydropdowns.js"></script>
 <script>
@@ -113,6 +113,6 @@ include("assets/scripts.php")
         $('.pretty-dropdown-demo').prettyDropdown();
     });
 </script>
-<!--    --><?php //include('includes/footer.php');?>
+<!--    --><?php //include_once('include_onces/footer.php');?>
 </body>
 </html>
