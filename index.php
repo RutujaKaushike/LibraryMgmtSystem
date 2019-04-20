@@ -4,7 +4,7 @@ include_once ("header.php");
 if($_SESSION['login']['user_level'] == 'admin')
     header('Location: dashboard.php');
 ?>
-
+<body style="background: black">
 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -110,3 +110,4 @@ include_once ("footer.php");
         $('.dataTables_length').addClass('bs-select');
     });
 </script>
+</body>
