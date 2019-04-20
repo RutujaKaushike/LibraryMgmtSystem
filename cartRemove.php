@@ -1,9 +1,9 @@
 <?php
 
-include("assets/config.php");
-include("assets/css.php");
-include("assets/scripts.php");
-include("cart.php");
+include_once("assets/config.php");
+include_once("assets/css.php");
+include_once("assets/scripts.php");
+include_once("cart.php");
 
 
 if(session_id() == '' || !isset($_SESSION)) {

@@ -24,13 +24,10 @@ session_start();
         <div class="navbar-nav nav-flex-icons" style="float: right">
             <?php
             if ($_SESSION['login']['user_level'] != 'admin') {
-                echo '<div class="nav-item px-2">
-                <a class="nav-link" href="cart.php">
-                   
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-                </a>
-            </div>';
+                echo '<a class="nav-link waves-effect" href="cart.php" style="text-decoration: none!important;">
+                    <span class="badge red z-depth-1 mr-1" id="numberofitems"> S </span>
+                    <i class="fas fa-shopping-cart fa-2x" style="padding-right: 10px;color: #212529"></i>
+                </a>';
             }
             if (isset($_SESSION['login'])) {
                 echo '<div class="btn-group">
@@ -59,5 +56,11 @@ session_start();
 <?php
 include_once("assets/scripts.php");
 ?>
+<script src="assets/js/main.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#numberofitems').text(<?php echo count($_SESSION['cartArr'])?>);
+    })
+</script>
 </body>
 </html>
