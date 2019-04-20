@@ -14,19 +14,17 @@ session_start();
     ?>
 </head>
 <body>
-<nav class="navbar navbar-default">
+
+<nav class="navbar navbar-default black" >
     <div class="container-fluid">
         <a href="/">
-            <img src="assets/img/logo.png" alt="logo" id="logo"></a>
-        <div class="navbar-header">
-            <h1>Online Library Service</h1>
-        </div>
+            <img src="assets/img/logoInverted.png" alt="logo" id="logo"></a>
         <div class="navbar-nav nav-flex-icons" style="float: right">
             <?php
             if ($_SESSION['login']['user_level'] != 'admin') {
                 echo '<a class="nav-link waves-effect" href="cart.php" style="text-decoration: none!important;">
                     <span class="badge red z-depth-1 mr-1" id="numberofitems"> S </span>
-                    <i class="fas fa-shopping-cart fa-2x" style="padding-right: 10px;color: #212529"></i>
+                    <i class="fas fa-shopping-cart fa-2x fa-w-18" style="padding-right: 10px;color: white"></i>
                 </a>';
             }
             if (isset($_SESSION['login'])) {
@@ -45,8 +43,8 @@ session_start();
                 include_once("register.php");
                 include_once("login.php");
                 echo '<div class="btn-group">
-                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
-                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#RegisterForm">Register</a>
+                    <a href="#" class="btn btn btn-dark waves-effect" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
+                <a href="#" class="btn btn btn-dark waves-effect" data-toggle="modal" data-target="#RegisterForm">Register</a>
             </div>';
             }
             ?>
