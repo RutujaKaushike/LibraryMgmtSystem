@@ -32,7 +32,7 @@ if($_SESSION['login']['user_level'] == 'admin')
     </a>
 </div>
 <div>
-    <table class="table" id="table">
+    <table class="table" id="table" style="background: black">
         <tr>
             <?php
             include_once("assets/config.php");
@@ -110,7 +110,3 @@ include_once ("footer.php");
         $('.dataTables_length').addClass('bs-select');
     });
 </script>
-
-
-</body>
-</html>
