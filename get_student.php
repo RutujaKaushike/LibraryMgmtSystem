@@ -1,7 +1,13 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.4.0/css/bootstrap4-toggle.min.css"
+          rel="stylesheet">
+</head>
 <?php
-include_once("assets/css.php");
-include_once("assets/config.php");
+
 include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
+include_once("assets/config.php");
 if (isset($_POST['_id'])) {
     $student_id = $_POST['_id'];
     $sql = 'UPDATE student SET isactive = IF(isactive = 1, 0, 1) WHERE student_id = "' . $student_id . '";';
@@ -26,45 +32,35 @@ if (isset($_POST['_id'])) {
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title>Online Library Management System | Manage Student</title>
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <style>
         table.table td, table.table th {
             padding-top: 10px;
             padding-bottom: 1px;
         }
 
-        .toggle-handle {
-            padding: 0;
-            background-color: rgb(222, 226, 230) !important;
-        }
-
-        .btn {
+        .btn-sm {
             padding-left: 10px !important;
             padding-right: 10px !important;
         }
 
-        .toggle-off {
-            border-top-left-radius: 5px !important;
-            border-bottom-left-radius: 5px !important;
+        .toggle-handle {
+            height: 34px !important;
+            clear: top;
         }
 
-        .toggle-on {
-            border-top-right-radius: 5px !important;
-            border-bottom-right-radius: 5px !important;
-        }
     </style>
 </head>
 <body>
-<br>
-<br>
-<br>
+
+
+
 <div class="col-md-2"></div>
 <div class="container container-fluid col-md-8">
     <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = 'dashboard.php'">
         <i class="fas fa-long-arrow-alt-left fa-2x"></i></button>
     <div class="text-center border border-light p-5">
         <p class="h4 mb-4">Manage Students</p>
-        <table id="students" class="table table-striped table-bordered">
+        <table id="students" class="table table-striped table-bordered table-sm">
             <thead>
             <tr>
                 <th class="th-sm">ID
@@ -88,7 +84,8 @@ if (isset($_POST['_id'])) {
             $category = "";
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $toggle = ' data-toggle="toggle" data-on="Active" data-off="Disabled" data-onstyle="success" data-offstyle="danger" data-size="small"></td>';
+                    $toggle = 'data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-size="sm"
+data-on="Active" data-off="Inactive  ."></td>';
                     $category = $category .
                         '<tr style="font-weight: bolder">
                             <td>' . $row['student_id'] . '</td>
@@ -96,9 +93,9 @@ if (isset($_POST['_id'])) {
                             <td>' . $row['email'] . '</td>
                             <td>' . $row['contact'] . '</td>';
                     if ($row['isactive'] == 1) {
-                        $active = '<td style="width: 100px"><input type="checkbox" checked ' . $toggle;
+                        $active = '<td style="width: 100px!important;"><input type="checkbox" checked ' . $toggle;
                     } else {
-                        $active = '<td style="width: 100px"><input type="checkbox" ' . $toggle;
+                        $active = '<td style="width: 100px!important;"><input type="checkbox" ' . $toggle;
                     }
                     $category = $category . $active . '</tr>';
                 }
@@ -107,7 +104,7 @@ if (isset($_POST['_id'])) {
             ?>
             </tbody>
         </table>
-        <br>
+
     </div>
 </div>
 <div class="col-md-2"></div>
@@ -121,7 +118,7 @@ include_once("footer.php");
         $('.dataTables_length').addClass('bs-select');
     });
 </script>
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="assets/js/bootstrap_toggle.js"></script>
 <script>
     $(function () {
         $('input').change(function () {

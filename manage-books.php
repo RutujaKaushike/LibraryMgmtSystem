@@ -2,6 +2,8 @@
 include_once('assets/config.php');
 include_once("assets/css.php");
 include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
 if (strlen($_POST['_id']) > 0) {
     $sql = "delete from authorbook where isbn='" . $_POST['_id'] . "';";
     if ($conn->query($sql) === TRUE) {
@@ -58,7 +60,7 @@ if (strlen($_POST['_id']) > 0) {
                 onclick="location.href = 'add-book.php'">Add Book
         </button>
         <div>
-            <table id="books" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="books" class="table table-sm table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th class="th-sm">ISBN
@@ -104,7 +106,7 @@ if (strlen($_POST['_id']) > 0) {
                 ?>
                 </tbody>
             </table>
-            <br>
+
         </div>
     </div>
 </div>

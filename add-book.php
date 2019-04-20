@@ -1,7 +1,7 @@
 <?php
-
 include_once("header.php");
-
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
 if (isset($_POST["author"]) && isset($_POST["category"])) {
     include_once("assets/config.php");
     $isbn = $_POST['isbn'];
@@ -68,9 +68,9 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     </style>
 </head>
 <body>
-<br>
-<br>
-<br>
+
+
+
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" role="form" method="post" enctype="multipart/form-data">
@@ -98,12 +98,12 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
         include_once("get_category.php");
         ?>
         <div class="btn-group" style="float: left">
-            <button style="float: left" class="btn btn-default" onclick="goBack()">Cancel</button>
+            <button style="float: left" class="btn btn-default" type="button" onclick="location.href = 'manage-books.php'">Cancel</button>
         </div>
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Book</button>
         </div>
-        <br>
+
     </form>
 </div>
 <div class="col-md-3"></div>

@@ -1,7 +1,9 @@
 <?php
+include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
 $get_isbn = $_GET['_id'];
 include_once("assets/config.php");
-include_once("header.php");
 $sql = "select * from books where isbn='" . $get_isbn . "';";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
@@ -93,9 +95,9 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     <link rel="stylesheet" href="assets/css/prettydropdowns.css">
 </head>
 <body>
-<br>
-<br>
-<br>
+
+
+
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" role="form" method="post" enctype="multipart/form-data">
@@ -168,13 +170,13 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Update Book</button>
         </div>
-        <br>
+
     </form>
 </div>
 <div class="col-md-3"></div>
-<?php include_once('footer.php'); ?>
 <?php
-include_once("assets/scripts.php")
+include_once('footer.php');
+include_once("assets/scripts.php");
 ?>
 <script src="assets/js/jquery.prettydropdowns.js"></script>
 <script>

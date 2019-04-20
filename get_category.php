@@ -1,3 +1,8 @@
+<?php
+include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
+?>
 <div>
     <label>
         <select class="pretty-dropdown-demo" multiple title="Categories" name="category[]">

@@ -1,5 +1,7 @@
 <?php
 include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+header('Location: /');
 include_once('assets/config.php');
 $sql = "select * from author";
 $result = $conn->query($sql);
@@ -29,7 +31,7 @@ $noBookIssue = mysqli_num_rows($result);
     </style>
 </head>
 <body>
-<br>
+
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -87,7 +89,6 @@ $noBookIssue = mysqli_num_rows($result);
         </div>
     </div>
 </div>
-<!-- CONTENT-WRAPPER SECTION END-->
 <?php include_once('assets/scripts.php');
 include_once("footer.php");
 ?>

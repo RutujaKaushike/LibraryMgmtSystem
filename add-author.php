@@ -1,5 +1,7 @@
 <?php
 include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
 include_once('assets/config.php');
 
 if ($_POST['author'] !== null || $_POST['author'] != "") {
@@ -35,9 +37,9 @@ if ($_POST['author'] !== null || $_POST['author'] != "") {
     ?>
 </head>
 <body>
-<br>
-<br>
-<br>
+
+
+
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" method="post" role="form">
@@ -52,7 +54,7 @@ if ($_POST['author'] !== null || $_POST['author'] != "") {
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Author</button>
         </div>
 
-        <br>
+
     </form>
 </div>
 <div class="col-md-3"></div>

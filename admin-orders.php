@@ -1,8 +1,9 @@
 <?php
-session_start();
+include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
 include_once('assets/config.php');
 include_once("assets/css.php");
-include_once("header.php");
 if (isset($_POST['order_id'])) {
     if ($_POST['type'] == 'return')
         $sql = "update orders set BookStatus='Returned' where orderID=" . $_POST['order_id'];
@@ -34,7 +35,7 @@ if (isset($_POST['order_id'])) {
     <div class="text-center border border-light p-5">
         <p class="h4 mb-4">Active Issue/ Return Requets</p>
         <div>
-            <table id="orders" class="table table-striped table-bordered">
+            <table id="orders" class="table table-sm table-striped table-bordered">
                 <thead>
                 <tr>
                     <th class="th-sm">Student Name
@@ -74,7 +75,7 @@ if (isset($_POST['order_id'])) {
                 ?>
                 </tbody>
             </table>
-            <br>
+
         </div>
     </div>
 </div>

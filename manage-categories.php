@@ -2,7 +2,8 @@
 include_once('assets/config.php');
 include_once("assets/css.php");
 include_once("header.php");
-
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
 if (strlen($_POST['_id']) > 0) {
     $name = $_POST['category_name'];
     $sql = "update category set name='".$name."' where category_id='" . $_POST['_id'] . "';";
@@ -43,9 +44,9 @@ if (strlen($_POST['_id']) > 0) {
     </style>
 </head>
 <body>
-<br>
-<br>
-<br>
+
+
+
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = 'dashboard.php'">
@@ -56,7 +57,7 @@ if (strlen($_POST['_id']) > 0) {
                 onclick="location.href = 'add-category.php'">Add Category
         </button>
         <div>
-            <table id="categories" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <table id="categories" class="table table-sm table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th class="th-sm">Category ID
@@ -88,7 +89,7 @@ if (strlen($_POST['_id']) > 0) {
                 ?>
                 </tbody>
             </table>
-            <br>
+
         </div>
     </div>
 </div>

@@ -1,8 +1,11 @@
 <?php
-session_start();
+
+include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'student')
+    header('Location: /');
+
 include_once('assets/config.php');
 include_once("assets/css.php");
-include_once("header.php");
 if (isset($_POST['order_id'])) {
     $sql = "update orders set BookStatus='Return Requested' where orderID=" . $_POST['order_id'];
     $result = $conn->query($sql);
@@ -23,12 +26,12 @@ if (isset($_POST['order_id'])) {
 <body>
 <div class="col-md-2"></div>
 <div class="container container-fluid col-md-8">
-    <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = 'dashboard.php'">
+    <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = '/'">
         <i class="fas fa-long-arrow-alt-left fa-3px"></i></button>
     <div class="text-center border border-light p-5">
         <p class="h4 mb-4">Your Order History</p>
         <div>
-            <table id="orders" class="table table-striped table-bordered">
+            <table id="orders" class="table table-sm table-striped table-bordered">
                 <thead>
                 <tr>
                     <th class="th-sm">Book Name
@@ -60,7 +63,7 @@ if (isset($_POST['order_id'])) {
                 ?>
                 </tbody>
             </table>
-            <br>
+
         </div>
     </div>
 </div>

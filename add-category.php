@@ -1,7 +1,7 @@
 <?php
-
 include_once("header.php");
-
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
 include_once('assets/config.php');
 if ($_POST['category'] !== null || $_POST['category'] != "") {
     $category = $_POST['category'];
@@ -32,9 +32,9 @@ if ($_POST['category'] !== null || $_POST['category'] != "") {
     ?>
 </head>
 <body>
-<br>
-<br>
-<br>
+
+
+
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" method="post" role="form">
@@ -49,7 +49,7 @@ if ($_POST['category'] !== null || $_POST['category'] != "") {
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Category</button>
         </div>
 
-        <br>
+
     </form>
 </div>
 <div class="col-md-3"></div>

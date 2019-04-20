@@ -1,11 +1,16 @@
+<?php
+include_once("header.php");
+if ($_SESSION['login']['user_level'] != 'admin')
+    header('Location: /');
+?>
 <head>
-<link rel="stylesheet" href="assets/css/prettydropdowns.css">
+    <link rel="stylesheet" href="assets/css/prettydropdowns.css">
 </head>
 <div>
     <label>
         <select class="pretty-dropdown-demo" multiple title="Authors" name="author[]">
             <?php
-            include_once ("assets/config.php");
+            include_once("assets/config.php");
             $query = "select * from author order by name;";
             $result = mysqli_query($conn, $query);
             $author = "";

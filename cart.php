@@ -7,14 +7,14 @@ include_once("assets/css.php");
 include_once("assets/scripts.php");
 sort($_SESSION['cartArr']);
 ?>
-<br>
+
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = '/'">
         <i class="fas fa-long-arrow-alt-left fa-2x"></i></button>
     <div class="text-center border border-light p-5">
         <p class="h4 mb-4">Your Cart</p>
-        <table id="students" class="table table-striped table-bordered">
+        <table id="students" class="table table-striped table-bordered table-sm">
             <thead>
             <tr>
                 <th class="th-sm">No.
@@ -39,7 +39,7 @@ sort($_SESSION['cartArr']);
             ?>
             </tbody>
         </table>
-        <br>
+
     </div>
 </div>
 <div class="col-md-3"></div>

@@ -53,10 +53,10 @@ session_start();
         </div>
     </div>
 </nav>
+<br>
 <?php
 include_once("assets/scripts.php");
 ?>
-<script src="assets/js/main.js"></script>
 <script>
     $(document).ready(function () {
         $('#numberofitems').text(<?php echo count($_SESSION['cartArr'])?>);

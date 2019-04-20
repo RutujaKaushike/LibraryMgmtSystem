@@ -32,7 +32,7 @@ if($_SESSION['login']['user_level'] == 'admin')
     </a>
 </div>
 <div>
-    <table class="table" id="table">
+    <table class="table table-sm" id="table">
         <tr>
             <?php
             include_once("assets/config.php");
