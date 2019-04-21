@@ -1,10 +1,16 @@
 <?php
 session_start();
-include_once ("header.php");
-if($_SESSION['login']['user_level'] == 'admin')
+include_once("header.php");
+if ($_SESSION['login']['user_level'] == 'admin')
     header('Location: dashboard.php');
 ?>
-
+<head>
+    <style>
+        tr {
+            display: inline-block;
+        }</style>
+</head>
+<body>
 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -32,30 +38,24 @@ if($_SESSION['login']['user_level'] == 'admin')
     </a>
 </div>
 <div>
-    <table class="table table-sm" id="table">
+    <table class="table table-sm" id="books">
+        <thead>
         <tr>
-            <?php
-            include_once("assets/config.php");
-            $sql = "SELECT * FROM books";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                $i = 0;
-                while ($row = $result->fetch_assoc()) {
-                    echo "<td><img alt='" . $row["isbn"] . "' data-toggle='modal' data-target='#objectInfo' id='" . $row["isbn"] . " ' src='assets/img/bookcover/" . $row["image"] . "' height='320px' width='200px' onclick='myFunction(" . $row["isbn"] . ")' /></td>";
-                    $i++;
-                    if ($i % 6 == 0) {
-                        echo "</tr>";
-                        $i = 0;
-                        echo "<tr>";
-                    }
-                }
-                $i = 0;
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td><img src='assets/img/bookcover/" . $row["image"] . "' alt=" . $row["image"] . "/><br>" . $row["name"] . "</td></tr>";
-                }
-            }
-            ?>
+            <th>Books' List</th>
         </tr>
+        </thead>
+        <tbody>
+        <?php
+        include_once("assets/config.php");
+        $sql = "SELECT * FROM books";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $i = 0;
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr><td><img alt='" . $row["isbn"] . "' data-toggle='modal' data-target='#objectInfo' id='" . $row["isbn"] . " ' src='assets/img/bookcover/" . $row["image"] . "' height='320px' width='200px' onclick='myFunction(" . $row["isbn"] . ")' /></td></tr>";
+            }
+        }
+        ?></tbody>
     </table>
 </div>
 <div class="modal fade" id="BookData" role="dialog" aria-labelledby="myModalLabel">
@@ -89,7 +89,7 @@ if($_SESSION['login']['user_level'] == 'admin')
 </div>
 <?php
 include_once("assets/scripts.php");
-include_once ("footer.php");
+include_once("footer.php");
 ?>
 <script>
     function myFunction(objId) {
@@ -110,7 +110,4 @@ include_once ("footer.php");
         $('.dataTables_length').addClass('bs-select');
     });
 </script>
-
-
 </body>
-</html>

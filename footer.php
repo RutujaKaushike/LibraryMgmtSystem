@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="clear"></div>
-<footer class="page-footer font-small grey pt-1 fixed-bottom">
+<footer class="page-footer font-small black pt-1 fixed-bottom">
 
     <div class="footer-copyright text-center py-2">© 2019 Copyright:
         <a href="https://www.linkedin.com/in/rutujakaushike/"> Rutuja Kaushike</a> & <a
