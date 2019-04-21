@@ -43,8 +43,8 @@ session_start();
                 include_once("register.php");
                 include_once("login.php");
                 echo '<div class="btn-group">
-                    <a href="#" class="btn btn btn-dark waves-effect" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
-                <a href="#" class="btn btn btn-dark waves-effect" data-toggle="modal" data-target="#RegisterForm">Register</a>
+                    <a href="#" class="btn btn btn-default waves-effect" data-toggle="modal" data-target="#LoginForm">Login</a> &nbsp
+                <a href="#" class="btn btn btn-default waves-effect" data-toggle="modal" data-target="#RegisterForm">Register</a>
             </div>';
             }
             ?>

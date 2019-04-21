@@ -5,7 +5,20 @@ include_once("header.php");
 include_once("assets/config.php");
 include_once("assets/css.php");
 include_once("assets/scripts.php");
+
+if(count($_SESSION['cartArr'])<=0)
+{
+    $message = "No items present!";
+    echo "<script type='text/javascript'>
+    alert('$message');
+    window.location.href = '/'; 
+    </script>";
+}
+
+
 sort($_SESSION['cartArr']);
+
+
 ?>
 
 <div class="col-md-3"></div>
@@ -37,8 +50,22 @@ sort($_SESSION['cartArr']);
                 }
             }
             ?>
+
             </tbody>
         </table>
+
+        <?php
+        if (!$_SESSION['login']['user_level']) {
+            include_once("login.php");
+                echo '<a href="#" class="btn btn-success" data-toggle="modal" data-target="#LoginForm">Checkout</a>';
+        }
+        else
+        {
+            echo '<button class="btn btn-success" onclick="myFunction4()">Checkout</button>';
+        }
+        ?>
+
+
 
     </div>
 </div>
@@ -58,4 +85,15 @@ include_once("footer.php");
             }
         });
     }
+
+    function myFunction4() {
+        jQuery.ajax({
+            url: 'cartCheckout.php',
+            type: 'GET',
+            success: function (result) {
+                $("body").html(result)
+            }
+        });
+    }
 </script>
+
