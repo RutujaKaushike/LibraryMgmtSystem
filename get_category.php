@@ -1,13 +1,12 @@
 <?php
-include_once("header.php");
-if ($_SESSION['login']['user_level'] != 'admin')
-    header('Location: /');
+include_once("assets/css.php");
 ?>
+<link rel="stylesheet" href="assets/css/prettydropdowns.css">
 <div>
-    <label>
+    <label id="listofcategory">
         <select class="pretty-dropdown-demo" multiple title="Categories" name="category[]">
             <?php
-            include_once ("assets/config.php");
+            include_once("assets/config.php");
             $query = "select * from category order by name;";
             $result = mysqli_query($conn, $query);
             $category = "";
@@ -21,3 +20,13 @@ if ($_SESSION['login']['user_level'] != 'admin')
         </select>
     </label>
 </div>
+<?php
+include_once("assets/scripts.php")
+?>
+<script src="assets/js/jquery.prettydropdowns.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.pretty-dropdown-demo').prettyDropdown({
+        });
+    });
+</script>
