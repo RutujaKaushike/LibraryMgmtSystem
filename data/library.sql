@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 06, 2019 at 07:56 PM
+-- Generation Time: Apr 21, 2019 at 04:42 AM
 -- Server version: 5.7.24-log
 -- PHP Version: 7.2.10
 
@@ -201,7 +201,8 @@ INSERT INTO `author` (`author_id`, `name`) VALUES
 (161, 'Simon Vance'),
 (162, 'Ewan McGregor'),
 (163, 'Lane Smith'),
-(164, 'Pamela F. Service');
+(164, 'Pamela F. Service'),
+(165, 'Rutuja');
 
 -- --------------------------------------------------------
 
@@ -220,9 +221,11 @@ CREATE TABLE `authorbook` (
 
 INSERT INTO `authorbook` (`author_id`, `isbn`) VALUES
 (1, 684801221),
+(1, 1234567890),
 (2, 553375407),
 (3, 1400082773),
 (4, 553213695),
+(4, 1234567890),
 (5, 767903862),
 (6, 440220653),
 (7, 1250058139),
@@ -239,6 +242,7 @@ INSERT INTO `authorbook` (`author_id`, `isbn`) VALUES
 (17, 1594481954),
 (18, 61357901),
 (19, 60688246),
+(19, 1234567890),
 (20, 809015803),
 (21, 1568360100),
 (22, 544837398),
@@ -270,7 +274,6 @@ INSERT INTO `authorbook` (`author_id`, `isbn`) VALUES
 (47, 1592232701),
 (48, 1118607783),
 (49, 132256886),
-(50, 60523808),
 (51, 470088702),
 (52, 735606030),
 (53, 131872486),
@@ -282,8 +285,10 @@ INSERT INTO `authorbook` (`author_id`, `isbn`) VALUES
 (59, 131038052),
 (60, 671578715),
 (61, 1581800460),
+(62, 60523808),
 (62, 1118880803),
 (63, 195106466),
+(64, 60523808),
 (64, 1593270542),
 (65, 395728592),
 (66, 1449379702),
@@ -295,6 +300,7 @@ INSERT INTO `authorbook` (`author_id`, `isbn`) VALUES
 (72, 3518381768),
 (73, 874478529),
 (74, 1620973928),
+(75, 60523808),
 (75, 1983911054),
 (76, 64431436),
 (77, 590313185),
@@ -316,7 +322,6 @@ INSERT INTO `authorbook` (`author_id`, `isbn`) VALUES
 (92, 425173291),
 (92, 425183092),
 (93, 439087597),
-(94, 60165979),
 (95, 684869837),
 (96, 762431067),
 (97, 393351491),
@@ -335,6 +340,7 @@ INSERT INTO `authorbook` (`author_id`, `isbn`) VALUES
 (108, 439446333),
 (109, 441005764),
 (110, 140303359),
+(111, 60523808),
 (111, 60850523),
 (112, 451524934),
 (113, 60883286),
@@ -404,187 +410,187 @@ CREATE TABLE `books` (
   `isbn` bigint(20) NOT NULL,
   `name` text NOT NULL,
   `image` text NOT NULL,
-  `no_of_copies` int(11) NOT NULL
+  `no_of_copies` int(11) NOT NULL,
+  `availablecopies` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`isbn`, `name`, `image`, `no_of_copies`) VALUES
-(60165979, 'Care of the Soul: A Guide for Cultivating Depth and Sacredness in Everyday Life', '41oQVAk783L._SL160_.jpg', 8),
-(60523808, 'Who Says Elephants Can\'t Dance? Inside IBM\'s Historic Turnaround', '51BSM4FFwjL._SL160_.jpg', 6),
-(60555971, 'I Never Had It Made: An Autobiography of Jackie Robinson', '41V-rrOLBYL._SL160_.jpg', 7),
-(60688246, 'A Severe Mercy', '41e-p3XItdL._SL160_.jpg', 5),
-(60741872, 'Alas', '41E9MEH9W3L._SL160_.jpg', 6),
-(60746378, 'Mayo Clinic Guide to a Healthy Pregnancy', '41AyhH3XGkL._SL160_.jpg', 10),
-(60850523, 'Brave New World', '41le8ej-fiL._SL160_.jpg', 5),
-(60883286, 'One Hundred Years of Solitude', '513GEHVNTBL._SL160_.jpg', 6),
-(60954787, 'Creating a Charmed Life: Sensible', '51+Z43LAqsL._SL160_.jpg', 6),
-(61357901, 'The Measure of a Man: A Spiritual Autobiography', '51QHrDrQ4fL._SL160_.jpg', 5),
-(61537969, 'The Art of Racing in the Rain', '414ef2JUxvL._SL160_.jpg', 6),
-(61930067, 'Little Princes: One Man\'s Promise to Bring Home the Lost Children of Nepal', '51y1IyILlqL._SL160_.jpg', 7),
-(62024035, 'Divergent', '51MyTJ6IWPL._SL160_.jpg', 8),
-(64401758, 'In the Year of The Boar and Jackie Robinson', '51-OCvN3whL._SL160_.jpg', 9),
-(64408663, 'The Hostile Hospital', '512gjx6MCbL._SL160_.jpg', 8),
-(64431436, 'Caps for Sale: A Tale of a Peddler', '517fvFK7ngL._SL160_.jpg', 9),
-(64460991, 'Geography from A to Z: A Picture Glossary (Trophy Picture Books)', '31fWTzSBnWL._SL160_.jpg', 5),
-(131038052, 'Artificial Intelligence: A Modern Approach', '5194WJ11V1L._SL160_.jpg', 10),
-(131872486, 'Thinking in Java', '31bmX1EXVZL._SL160_.jpg', 8),
-(132256886, 'Precalculus', '51lxs5hY+JL._SL160_.jpg', 10),
-(140303359, 'The Golden Goblet', '51MIUKaEkiL._SL160_.jpg', 9),
-(140566490, 'Madeline in London', '51j0qXRKKdL._SL160_.jpg', 10),
-(142002836, 'The Last American Man', '51S5lyDodgL._SL160_.jpg', 5),
-(142400459, 'The Not-So-Jolly Roger', '51H4uBFGbQL._SL160_.jpg', 7),
-(142401099, 'The Devil\'s Arithmetic', '4193GC1JWXL._SL160_.jpg', 7),
-(142418447, 'Shoot-Out', '51aXwoiyVlL._SL160_.jpg', 5),
-(156701600, 'Orlando', '51UcBTUmkvL._SL160_.jpg', 8),
-(156899825, 'This House of Sky: Landscapes of a Western Mind', '5167oEu0bQL._SL160_.jpg', 6),
-(195106466, 'Shadows of the Mind: A Search for the Missing Science of Consciousness', '51nodxgRybL._SL160_.jpg', 7),
-(201550873, 'On Becoming A Leader', '410LyWAvvwL._SL160_.jpg', 10),
-(307279189, 'Born to Run: A Hidden Tribe', '5117MxRQidL._SL160_.jpg', 9),
-(307475018, 'My Life in France', '51gjSqc+LQL._SL160_.jpg', 5),
-(312427735, 'Middlesex', '41HHxQGKa3L._SL160_.jpg', 8),
-(312936222, 'Ten Big Ones', '51OF6Y4P9wL._SL160_.jpg', 5),
-(312965664, 'Agatha Raisin and the Terrible Tourist', '516J8TuyMkL._SL160_.jpg', 8),
-(345480155, 'Into the Storm', '5153BkI6arL._SL160_.jpg', 5),
-(345497627, 'The Keepsake', '31gkWKp3B2L._SL160_.jpg', 7),
-(345527704, 'Smokin\' Seventeen', '51+8E9NP8ML._SL160_.jpg', 5),
-(345535154, 'Deal Breaker', '51L-VdMPhhL._SL160_.jpg', 9),
-(375802916, 'Junie B. Jones Is Captain Field Day', '51YdtC-pIcL._SL160_.jpg', 7),
-(380003210, 'Alive: The Story of the Andes Survivors', '51vU+Y6dzLL._SL160_.jpg', 8),
-(380010038, 'The Cay', '51J4F2A925L._SL160_.jpg', 8),
-(385517254, 'The Fifth Discipline: The Art & Practice of The Learning Organization', '51T+Y7NoXcL._SL160_.jpg', 7),
-(393048136, 'The New New Thing: A Silicon Valley Story', '41LK640p4FL._SL160_.jpg', 8),
-(393351491, 'The Blind Watchmaker: Why the Evidence of Evolution Reveals a Universe Without Design', '51gHlHu8biL._SL160_.jpg', 7),
-(394800362, 'The Bike Lesson', '511QWcGmCUL._SL160_.jpg', 10),
-(395728592, 'Guerrilla Marketing Online: The Entrepreneur\'s Guide to Earning Profits on the Internet (Guerrilla Marketing)', '5171S1Q4S8L._SL160_.jpg', 7),
-(399214577, 'Owl Moon', '51XmF+kLeJL._SL160_.jpg', 8),
-(399584161, 'Eat Right 4 Your Type', '511yGPlN2DL._SL160_.jpg', 6),
-(399594493, 'Trump: The Art of the Deal', '51otmKylr6L._SL160_.jpg', 10),
-(425173291, 'Cook Right 4 Your Type: The Practical Kitchen Companion to Eat Right 4 Your Type', '51xcCUGc2sL._SL160_.jpg', 10),
-(425183092, 'Diet Sehat Golongan Darah O', '51GLDWs5DFL._SL160_.jpg', 10),
-(425198324, 'Death\'s Acre: Inside the Legendary Forensic Lab the Body Farm Where the Dead Do Tell Tales', '514073MPNTL._SL160_.jpg', 10),
-(425228975, 'Silks', '5101y4tFVTL._SL160_.jpg', 8),
-(439087597, 'The Last Book in the Universe', '51HtLd-e-KL._SL160_.jpg', 7),
-(439446333, 'The Breadwinner', '51mkBxOLf7L._SL160_.jpg', 7),
-(440220653, 'The Face on the Milk Carton', '51K0BlH8OtL._SL160_.jpg', 7),
-(440246083, 'Back Spin', '514LBWH13-L._SL160_.jpg', 7),
-(440412676, 'Where the Red Fern Grows', '51QWK0WB8KL._SL160_.jpg', 9),
-(440419395, 'Hoot', '41tuSGK8aCL._SL160_.jpg', 7),
-(441005764, 'Mossflower', '51qJt1C2UaL._SL160_.jpg', 6),
-(441010512, 'Club Dead', '51CMqkkx8gL._SL160_.jpg', 7),
-(446380636, 'How to Master the Art of Selling', '21cUUI4EMWL._SL160_.jpg', 7),
-(446394599, 'Lincoln on Leadership: Executive Strategies for Tough Times', '51YCcocfs0L._SL160_.jpg', 6),
-(446518620, 'The Celestine Prophecy', '51D1CpfhqaL._SL160_.jpg', 9),
-(446525685, 'Business @ the Speed of Thought: Succeeding in the Digital Economy', '51ho3AP0OkL._SL160_.jpg', 5),
-(446562432, 'Witch & Wizard', '51tinNylvIL._SL160_.jpg', 8),
-(446618896, 'School\'s Out Forever', '51GiVdPl7wL._SL160_.jpg', 8),
-(446693510, 'Missed Fortune 101: A Starter Kit to Becoming a Millionaire', '51ZhnA6jgDL._SL160_.jpg', 7),
-(449213447, 'The Chosen', '51G7eJjx89L._SL160_.jpg', 6),
-(449213943, 'Im Westen nichts Neues', '41NKABNB9GL._SL160_.jpg', 9),
-(449703398, 'Reluctant God', '513D2YH9GBL._SL160_.jpg', 7),
-(451166884, 'The Want-Ad Killer', '51xHWXFp2WL._SL160_.jpg', 6),
-(451524934, 'Nineteen Eighty-Four', '31twj9hz1kL._SL160_.jpg', 10),
-(452281431, 'Beauty\'s Punishment', '41yxyeLwxBL._SL160_.jpg', 8),
-(470088702, 'Beginning Programming For Dummies (Beginning Programming for Dummies)', '51zPQ7HrKFL._SL160_.jpg', 8),
-(471366927, 'Principles of Anatomy and Physiology', '51KFAfr2bTL._SL160_.jpg', 7),
-(486272630, 'Flatland: A Romance of Many Dimensions', '51X6IkcGHPL._SL160_.jpg', 5),
-(525244743, 'When Rabbit Howls', '51T5fAJG5vL._SL160_.jpg', 10),
-(525947698, 'The Privilege of Youth: A Teenager\'s Story', '518IpjwAhcL._SL160_.jpg', 10),
-(544837398, 'Autobiography of a Face', '41964p0t-zL._SL160_.jpg', 9),
-(553212737, 'Emma', '61fM6l2UVTL._SL160_.jpg', 9),
-(553213695, 'Die Verwandlung', '51tdRAgrW9L._SL160_.jpg', 10),
-(553375407, 'Ishmael: An Adventure of the Mind and Spirit', '51c9PkFculL._SL160_.jpg', 9),
-(553418351, 'Gone Girl', '41ePAI+zsmL._SL160_.jpg', 10),
-(553593714, 'A Game of Thrones', '51aeUv8h6CL._SL160_.jpg', 9),
-(590313185, 'Bunnicula: A Rabbit-Tale of Mystery', '515MBTEMKYL._SL160_.jpg', 6),
-(590982079, 'Roll of Thunder', '51tE2zQ7DnL._SL160_.jpg', 5),
-(618446877, 'Dark Star Safari', '51ifr63152L._SL160_.jpg', 8),
-(671457110, 'The Great Bridge: The Epic Story of the Building of the Brooklyn Bridge', '51Rco7nZwEL._SL160_.jpg', 5),
-(671578715, 'Fortune\'s Stroke', '51VM2NJY1YL._SL160_.jpg', 6),
-(671622480, 'People Skills: How to Assert Yourself', '416+j70DDLL._SL160_.jpg', 6),
-(671794370, 'How I Raised Myself from Failure to Success in Selling', '51iMttzc7GL._SL160_.jpg', 8),
-(673381862, 'Style: Ten Lessons in Clarity and Grace', '41P-Cg5vrZL._SL160_.jpg', 9),
-(679456589, 'The Man Who Listens to Horses', '51YPZMWlhNL._SL160_.jpg', 7),
-(679729771, 'Maus II : And Here My Troubles Began', '51fcK8PNwFL._SL160_.jpg', 10),
-(684801221, 'The Old Man and the Sea', '411pakPjvdL._SL160_.jpg', 8),
-(684857219, 'The New Encyclopedia of Modern Bodybuilding : The Bible of Bodybuilding', '61AJB7D89FL._SL160_.jpg', 6),
-(684869837, 'Don\'t Give It Away! : A Workbook of Self-Awareness and Self-Affirmations for Young Women', '41Dvey-onAL._SL160_.jpg', 9),
-(688039693, 'Leadership and the One Minute Manager: Increasing Effectiveness Through Situational Leadership', '51Q-tRVLm3L._SL160_.jpg', 7),
-(689806590, 'Bunnicula: A Rabbit-Tale of Mystery', '515MBTEMKYL._SL160_.jpg', 5),
-(689818513, 'Forged by Fire', '2194l6jQaoL._SL160_.jpg', 9),
-(689823959, 'I Have Lived A Thousand Years: Growing Up In The Holocaust', '51SB2C8CCWL._SL160_.jpg', 5),
-(735606030, 'Play Winning Chess', '414Qw2KIY9L._SL160_.jpg', 8),
-(736957499, 'The Power of a Praying Wife', '41ShQS2aUZL._SL160_.jpg', 9),
-(743255690, 'The Soul of a Butterfly: Reflections on Life\'s Journey', '51XX3A8DWHL._SL160_.jpg', 5),
-(743436539, 'The Virginian: A Horseman of the Plains', '41H0M9V26ZL._SL160_.jpg', 7),
-(743477561, 'The Merchant of Venice', '51a-NbvkmkL._SL160_.jpg', 10),
-(743499344, 'Long Way Round: Chasing Shadows Across the World', '51MTT03X7DL._SL160_.jpg', 9),
-(762431067, 'Skinny Bitch in the Kitch: Kick-Ass Solutions for Hungry Girls Who Want to Stop Eating Crap (and Start Looking Hot!)', '51JwJipIhnL._SL160_.jpg', 6),
-(764516604, 'Linux for Dummies', '51Mse1s81AL._SL160_.jpg', 8),
-(767903277, 'The Informant', '51aMTi6wXbL._SL160_.jpg', 5),
-(767903862, 'Down Under', '51uCBWKPQdL._SL160_.jpg', 9),
-(787984922, 'The Leadership Challenge', '51qv+NdmuRL._SL160_.jpg', 7),
-(802400248, 'De Imitatione Christi', '514wAewRrmL._SL160_.jpg', 5),
-(802860613, 'Lilith: A Romance', '41h1yfpSX4L._SL160_.jpg', 7),
-(803730411, 'Snowmen at Night', '51xLpMdP9hL._SL160_.jpg', 10),
-(804104549, 'Riding the Iron Rooster', '51MTI5LyIGL._SL160_.jpg', 9),
-(805065415, 'Blue Latitudes: Boldly Going Where Captain Cook Has Gone Before', '51b0a1jhKFL._SL160_.jpg', 8),
-(805396136, 'Molecular Biology of the Gene', '41riHfmSDhL._SL160_.jpg', 8),
-(805418466, 'Experiencing God Day by Day: A Devotional and Journal', '41S2ek62uUL._SL160_.jpg', 7),
-(809015803, 'All But My Life', '416IN9eIHdL._SL160_.jpg', 6),
-(812043634, '501 French Verbs: Fully Conjugated in All the Tenses in a New Easy-To-Learn Format Alphabetically Arranged', '516Zqn1YsqL._SL160_.jpg', 10),
-(812976088, 'The End of Nature', '61aoP5377IL._SL160_.jpg', 6),
-(874478529, 'The Official SAT Study Guide', '4131LvT6LIL._SL160_.jpg', 9),
-(876043759, 'There Is a River: The Story of Edgar Cayce', '415JlgtRaCL._SL160_.jpg', 7),
-(879234490, 'The American Boy\'s Handy Book: What to Do and How to Do It', '612ZsZMNKYL._SL160_.jpg', 7),
-(910034796, 'Courage to Change: One Day at a Time in Al-Anon II', '51yIcT83H+L._SL160_.jpg', 10),
-(915166950, 'Rebuilding: When Your Relationship Ends (Rebuilding Books; For Divorce and Beyond)', '51s9Oodk21L._SL160_.jpg', 7),
-(936070463, 'Stretching', '51UrjNDiENL._SL160_.jpg', 9),
-(966378601, 'Shepherding a Child\'s Heart', '51R089Y1DML._SL160_.jpg', 10),
-(975599500, 'Natural Cures They Don\'t Want You To Know About', '51TDZEWNOEL._SL160_.jpg', 7),
-(981989713, 'Free Money', '51bqXhFK2TL._SL160_.jpg', 7),
-(1118273052, 'Market Wizards: Interviews with Top Traders', '51uzWzvZskL._SL160_.jpg', 7),
-(1118607783, 'Starting an Online Business For Dummies (For Dummies (Computer/Tech))', '514ENeCQ3-L._SL160_.jpg', 8),
-(1118880803, 'Marketing for Dummies', '512rEsiTrXL._SL160_.jpg', 6),
-(1119239281, 'Stock Investing For Dummies (For Dummies (Business & Personal Finance))', '51zWLqoNkcL._SL160_.jpg', 7),
-(1250051126, 'Full Bloom', '31rbngk8r6L._SL160_.jpg', 6),
-(1250058139, 'James Herriot\'s Treasury for Children: Warm and Joyful Tales by the Author of All Creatures Great and Small', '51pDT-YQvOL._SL160_.jpg', 6),
-(1400064287, 'Made to Stick: Why Some Ideas Survive and Others Die', '41hMTwhl6IL._SL160_.jpg', 7),
-(1400064678, 'China Road: A Journey into the Future of a Rising Power', '61azZ0iWdBL._SL160_.jpg', 7),
-(1400082773, 'Dreams from My Father', '51LCJdzcSNL._SL160_.jpg', 5),
-(1423103343, 'The Sea of Monsters', '51M7jQ4ETqL._SL160_.jpg', 10),
-(1423649125, 'My First Summer in the Sierra', '516aouQB2bL._SL160_.jpg', 8),
-(1426216513, 'National Geographic Guide to the National Parks of the United States', '51zjMNhDCeL._SL160_.jpg', 5),
-(1433555506, 'Don\'t Waste Your Life', '51JNBKCFLcL._SL160_.jpg', 9),
-(1433679590, 'The Love Dare', '41wMLZxQmtL._SL160_.jpg', 9),
-(1435145461, 'Gray\'s Anatomy', '41V5VDBX7NL._SL160_.jpg', 5),
-(1449379702, 'Designing Interfaces', '51iGu-amKbL._SL160_.jpg', 10),
-(1451646291, 'Springwater', '51W1MuHa73L._SL160_.jpg', 9),
-(1455536504, 'The Reversal', '5160FGjFR1L._SL160_.jpg', 10),
-(1565126050, 'Last Child in the Woods: Saving Our Children from Nature-Deficit Disorder', '51MSDpQjeLL._SL160_.jpg', 10),
-(1568360100, 'Having Our Say: The Delany Sisters\' First 100 Years', '51MSM7986EL._SL160_.jpg', 6),
-(1572319950, 'Programming Windows', '51PpbUUDKzL._SL160_.jpg', 5),
-(1573223158, 'My Friend Leonard', '41PQEqZ8baL._SL160_.jpg', 6),
-(1579542417, 'Dr. Shapiro\'s Picture Perfect Weight Loss: The Visual Program for Permanent Weight Loss', '513BJ8VBTKL._SL160_.jpg', 9),
-(1581800460, 'Idea Index: Graphic Effects and Typographic Treatments', '41AxjO3kLxL._SL160_.jpg', 6),
-(1582701709, 'The Secret', '51A+qi-XyfL._SL160_.jpg', 10),
-(1585425524, 'The Now Habit: A Strategic Program for Overcoming Procrastination and Enjoying Guilt-Free Play', '51NbewRyO9L._SL160_.jpg', 8),
-(1590529910, 'Authentic Beauty: The Shaping of a Set-Apart Young Woman', '418VwmIS3ML._SL160_.jpg', 7),
-(1591450420, 'It\'s Not About Me: Rescue From the Life We Thought Would Make Us Happy', '413ttv5z+YL._SL160_.jpg', 9),
-(1592232701, 'Uncle John\'s Slightly Irregular Bathroom Reader', '61AFQ5D464L._SL160_.jpg', 5),
-(1592402860, 'How Starbucks Saved My Life: A Son of Privilege Learns to Live Like Everyone Else', '51jhFCO1wzL._SL160_.jpg', 9),
-(1593270542, 'The Unofficial LEGO Builder\'s Guide', '51RaP4lqjHL._SL160_.jpg', 9),
-(1594481954, 'My Friend Leonard', '41PQEqZ8baL._SL160_.jpg', 6),
-(1601422210, 'Radical: Taking Back Your Faith from the American Dream', '41QxhEWm8DL._SL160_.jpg', 6),
-(1620973928, 'Lies My Teacher Told Me: Everything Your American History Textbook Got Wrong', '51zPXyWbZwL._SL160_.jpg', 8),
-(1626361584, 'U.S. Army Survival Manual', '31psDAd7++L._SL160_.jpg', 10),
-(1878257749, 'Earthsearch: A Kids\' Geography Museum in a Book', '51qTWn49pQL._SL160_.jpg', 7),
-(1885167237, 'Inside the Magic Kingdom : Seven Keys to Disney\'s Success', '41YP47WXDRL._SL160_.jpg', 8),
-(1983911054, 'Murder on the Orient Express', '51xlO6rB1wL._SL160_.jpg', 10),
-(3518381768, 'The House of the Spirits', '51RR9yHMRCL._SL160_.jpg', 8),
-(4805311983, 'Hagakure: The Book of the Samurai', '41wzdwwxXJL._SL160_.jpg', 5);
+INSERT INTO `books` (`isbn`, `name`, `image`, `no_of_copies`, `availablecopies`) VALUES
+(60523808, 'Who Says Elephants Can\'t Dance? Inside IBM\'s Historic Turnaround', 'user2.png', 6, NULL),
+(60555971, 'I Never Had It Made: An Autobiography of Jackie Robinson', '41V-rrOLBYL._SL160_.jpg', 7, 7),
+(60688246, 'A Severe Mercy', '41e-p3XItdL._SL160_.jpg', 5, 5),
+(60741872, 'Alas', '41E9MEH9W3L._SL160_.jpg', 6, 6),
+(60746378, 'Mayo Clinic Guide to a Healthy Pregnancy', '41AyhH3XGkL._SL160_.jpg', 10, 10),
+(60850523, 'Brave New World', '41le8ej-fiL._SL160_.jpg', 5, 5),
+(60883286, 'One Hundred Years of Solitude', '513GEHVNTBL._SL160_.jpg', 6, 6),
+(60954787, 'Creating a Charmed Life: Sensible', '51+Z43LAqsL._SL160_.jpg', 6, 6),
+(61357901, 'The Measure of a Man: A Spiritual Autobiography', '51QHrDrQ4fL._SL160_.jpg', 5, 5),
+(61537969, 'The Art of Racing in the Rain', '414ef2JUxvL._SL160_.jpg', 6, 6),
+(61930067, 'Little Princes: One Man\'s Promise to Bring Home the Lost Children of Nepal', '51y1IyILlqL._SL160_.jpg', 7, 7),
+(62024035, 'Divergent', '51MyTJ6IWPL._SL160_.jpg', 8, 8),
+(64401758, 'In the Year of The Boar and Jackie Robinson', '51-OCvN3whL._SL160_.jpg', 9, 9),
+(64408663, 'The Hostile Hospital', '512gjx6MCbL._SL160_.jpg', 8, 8),
+(64431436, 'Caps for Sale: A Tale of a Peddler', '517fvFK7ngL._SL160_.jpg', 9, 9),
+(64460991, 'Geography from A to Z: A Picture Glossary (Trophy Picture Books)', '31fWTzSBnWL._SL160_.jpg', 5, 5),
+(131038052, 'Artificial Intelligence: A Modern Approach', '5194WJ11V1L._SL160_.jpg', 10, 10),
+(131872486, 'Thinking in Java', '31bmX1EXVZL._SL160_.jpg', 8, 8),
+(132256886, 'Precalculus', '51lxs5hY+JL._SL160_.jpg', 10, 10),
+(140303359, 'The Golden Goblet', '51MIUKaEkiL._SL160_.jpg', 9, 9),
+(140566490, 'Madeline in London', '51j0qXRKKdL._SL160_.jpg', 10, 10),
+(142002836, 'The Last American Man', '51S5lyDodgL._SL160_.jpg', 5, 5),
+(142400459, 'The Not-So-Jolly Roger', '51H4uBFGbQL._SL160_.jpg', 7, 7),
+(142401099, 'The Devil\'s Arithmetic', '4193GC1JWXL._SL160_.jpg', 7, 7),
+(142418447, 'Shoot-Out', '51aXwoiyVlL._SL160_.jpg', 5, 5),
+(156701600, 'Orlando', '51UcBTUmkvL._SL160_.jpg', 8, 8),
+(156899825, 'This House of Sky: Landscapes of a Western Mind', '5167oEu0bQL._SL160_.jpg', 6, 6),
+(195106466, 'Shadows of the Mind: A Search for the Missing Science of Consciousness', '51nodxgRybL._SL160_.jpg', 7, 7),
+(201550873, 'On Becoming A Leader', '410LyWAvvwL._SL160_.jpg', 10, 10),
+(307279189, 'Born to Run: A Hidden Tribe', '5117MxRQidL._SL160_.jpg', 9, 9),
+(307475018, 'My Life in France', '51gjSqc+LQL._SL160_.jpg', 5, 5),
+(312427735, 'Middlesex', '41HHxQGKa3L._SL160_.jpg', 8, 8),
+(312936222, 'Ten Big Ones', '51OF6Y4P9wL._SL160_.jpg', 5, 5),
+(312965664, 'Agatha Raisin and the Terrible Tourist', '516J8TuyMkL._SL160_.jpg', 8, 8),
+(345480155, 'Into the Storm', '5153BkI6arL._SL160_.jpg', 5, 5),
+(345497627, 'The Keepsake', '31gkWKp3B2L._SL160_.jpg', 7, 7),
+(345527704, 'Smokin\' Seventeen', '51+8E9NP8ML._SL160_.jpg', 5, 5),
+(345535154, 'Deal Breaker', '51L-VdMPhhL._SL160_.jpg', 9, 9),
+(375802916, 'Junie B. Jones Is Captain Field Day', '51YdtC-pIcL._SL160_.jpg', 7, 7),
+(380003210, 'Alive: The Story of the Andes Survivors', '51vU+Y6dzLL._SL160_.jpg', 8, 8),
+(380010038, 'The Cay', '51J4F2A925L._SL160_.jpg', 8, 8),
+(385517254, 'The Fifth Discipline: The Art & Practice of The Learning Organization', '51T+Y7NoXcL._SL160_.jpg', 7, 7),
+(393048136, 'The New New Thing: A Silicon Valley Story', '41LK640p4FL._SL160_.jpg', 8, 8),
+(393351491, 'The Blind Watchmaker: Why the Evidence of Evolution Reveals a Universe Without Design', '51gHlHu8biL._SL160_.jpg', 7, 7),
+(394800362, 'The Bike Lesson', '511QWcGmCUL._SL160_.jpg', 10, 10),
+(395728592, 'Guerrilla Marketing Online: The Entrepreneur\'s Guide to Earning Profits on the Internet (Guerrilla Marketing)', '5171S1Q4S8L._SL160_.jpg', 7, 7),
+(399214577, 'Owl Moon', '51XmF+kLeJL._SL160_.jpg', 8, 8),
+(399584161, 'Eat Right 4 Your Type', '511yGPlN2DL._SL160_.jpg', 6, 6),
+(399594493, 'Trump: The Art of the Deal', '51otmKylr6L._SL160_.jpg', 10, 10),
+(425173291, 'Cook Right 4 Your Type: The Practical Kitchen Companion to Eat Right 4 Your Type', '51xcCUGc2sL._SL160_.jpg', 10, 10),
+(425183092, 'Diet Sehat Golongan Darah O', '51GLDWs5DFL._SL160_.jpg', 10, 10),
+(425198324, 'Death\'s Acre: Inside the Legendary Forensic Lab the Body Farm Where the Dead Do Tell Tales', '514073MPNTL._SL160_.jpg', 10, 10),
+(425228975, 'Silks', '5101y4tFVTL._SL160_.jpg', 8, 8),
+(439087597, 'The Last Book in the Universe', '51HtLd-e-KL._SL160_.jpg', 7, 7),
+(439446333, 'The Breadwinner', '51mkBxOLf7L._SL160_.jpg', 7, 7),
+(440220653, 'The Face on the Milk Carton', '51K0BlH8OtL._SL160_.jpg', 7, 7),
+(440246083, 'Back Spin', '514LBWH13-L._SL160_.jpg', 7, 7),
+(440412676, 'Where the Red Fern Grows', '51QWK0WB8KL._SL160_.jpg', 9, 9),
+(440419395, 'Hoot', '41tuSGK8aCL._SL160_.jpg', 7, 7),
+(441005764, 'Mossflower', '51qJt1C2UaL._SL160_.jpg', 6, 6),
+(441010512, 'Club Dead', '51CMqkkx8gL._SL160_.jpg', 7, 7),
+(446380636, 'How to Master the Art of Selling', '21cUUI4EMWL._SL160_.jpg', 7, 7),
+(446394599, 'Lincoln on Leadership: Executive Strategies for Tough Times', '51YCcocfs0L._SL160_.jpg', 6, 6),
+(446518620, 'The Celestine Prophecy', '51D1CpfhqaL._SL160_.jpg', 9, 9),
+(446525685, 'Business @ the Speed of Thought: Succeeding in the Digital Economy', '51ho3AP0OkL._SL160_.jpg', 5, 5),
+(446562432, 'Witch & Wizard', '51tinNylvIL._SL160_.jpg', 8, 8),
+(446618896, 'School\'s Out Forever', '51GiVdPl7wL._SL160_.jpg', 8, 8),
+(446693510, 'Missed Fortune 101: A Starter Kit to Becoming a Millionaire', '51ZhnA6jgDL._SL160_.jpg', 7, 7),
+(449213447, 'The Chosen', '51G7eJjx89L._SL160_.jpg', 6, 6),
+(449213943, 'Im Westen nichts Neues', '41NKABNB9GL._SL160_.jpg', 9, 9),
+(449703398, 'Reluctant God', '513D2YH9GBL._SL160_.jpg', 7, 7),
+(451166884, 'The Want-Ad Killer', '51xHWXFp2WL._SL160_.jpg', 6, 6),
+(451524934, 'Nineteen Eighty-Four', '31twj9hz1kL._SL160_.jpg', 10, 10),
+(452281431, 'Beauty\'s Punishment', '41yxyeLwxBL._SL160_.jpg', 8, 8),
+(470088702, 'Beginning Programming For Dummies (Beginning Programming for Dummies)', '51zPQ7HrKFL._SL160_.jpg', 8, 8),
+(471366927, 'Principles of Anatomy and Physiology', '51KFAfr2bTL._SL160_.jpg', 7, 7),
+(486272630, 'Flatland: A Romance of Many Dimensions', '51X6IkcGHPL._SL160_.jpg', 5, 5),
+(525244743, 'When Rabbit Howls', '51T5fAJG5vL._SL160_.jpg', 10, 10),
+(525947698, 'The Privilege of Youth: A Teenager\'s Story', '518IpjwAhcL._SL160_.jpg', 10, 10),
+(544837398, 'Autobiography of a Face', '41964p0t-zL._SL160_.jpg', 9, 9),
+(553212737, 'Emma', '61fM6l2UVTL._SL160_.jpg', 9, 9),
+(553213695, 'Die Verwandlung', '51tdRAgrW9L._SL160_.jpg', 10, 10),
+(553375407, 'Ishmael: An Adventure of the Mind and Spirit', '51c9PkFculL._SL160_.jpg', 9, 9),
+(553418351, 'Gone Girl', '41ePAI+zsmL._SL160_.jpg', 10, 10),
+(553593714, 'A Game of Thrones', '51aeUv8h6CL._SL160_.jpg', 9, 9),
+(590313185, 'Bunnicula: A Rabbit-Tale of Mystery', '515MBTEMKYL._SL160_.jpg', 6, 6),
+(590982079, 'Roll of Thunder', '51tE2zQ7DnL._SL160_.jpg', 5, 5),
+(618446877, 'Dark Star Safari', '51ifr63152L._SL160_.jpg', 8, 8),
+(671457110, 'The Great Bridge: The Epic Story of the Building of the Brooklyn Bridge', '51Rco7nZwEL._SL160_.jpg', 5, 5),
+(671578715, 'Fortune\'s Stroke', '51VM2NJY1YL._SL160_.jpg', 6, 6),
+(671622480, 'People Skills: How to Assert Yourself', '416+j70DDLL._SL160_.jpg', 6, 6),
+(671794370, 'How I Raised Myself from Failure to Success in Selling', '51iMttzc7GL._SL160_.jpg', 8, 8),
+(673381862, 'Style: Ten Lessons in Clarity and Grace', '41P-Cg5vrZL._SL160_.jpg', 9, 9),
+(679456589, 'The Man Who Listens to Horses', '51YPZMWlhNL._SL160_.jpg', 7, 7),
+(679729771, 'Maus II : And Here My Troubles Began', '51fcK8PNwFL._SL160_.jpg', 10, 10),
+(684801221, 'The Old Man and the Sea', '411pakPjvdL._SL160_.jpg', 8, 8),
+(684857219, 'The New Encyclopedia of Modern Bodybuilding : The Bible of Bodybuilding', '61AJB7D89FL._SL160_.jpg', 6, 6),
+(684869837, 'Don\'t Give It Away! : A Workbook of Self-Awareness and Self-Affirmations for Young Women', '41Dvey-onAL._SL160_.jpg', 9, 9),
+(688039693, 'Leadership and the One Minute Manager: Increasing Effectiveness Through Situational Leadership', '51Q-tRVLm3L._SL160_.jpg', 7, 7),
+(689806590, 'Bunnicula: A Rabbit-Tale of Mystery', '515MBTEMKYL._SL160_.jpg', 5, 5),
+(689818513, 'Forged by Fire', '2194l6jQaoL._SL160_.jpg', 9, 9),
+(689823959, 'I Have Lived A Thousand Years: Growing Up In The Holocaust', '51SB2C8CCWL._SL160_.jpg', 5, 5),
+(735606030, 'Play Winning Chess', '414Qw2KIY9L._SL160_.jpg', 8, 8),
+(736957499, 'The Power of a Praying Wife', '41ShQS2aUZL._SL160_.jpg', 9, 9),
+(743255690, 'The Soul of a Butterfly: Reflections on Life\'s Journey', '51XX3A8DWHL._SL160_.jpg', 5, 5),
+(743436539, 'The Virginian: A Horseman of the Plains', '41H0M9V26ZL._SL160_.jpg', 7, 7),
+(743477561, 'The Merchant of Venice', '51a-NbvkmkL._SL160_.jpg', 10, 10),
+(743499344, 'Long Way Round: Chasing Shadows Across the World', '51MTT03X7DL._SL160_.jpg', 9, 9),
+(762431067, 'Skinny Bitch in the Kitch: Kick-Ass Solutions for Hungry Girls Who Want to Stop Eating Crap (and Start Looking Hot!)', '51JwJipIhnL._SL160_.jpg', 6, 6),
+(764516604, 'Linux for Dummies', '51Mse1s81AL._SL160_.jpg', 8, 8),
+(767903277, 'The Informant', '51aMTi6wXbL._SL160_.jpg', 5, 5),
+(767903862, 'Down Under', '51uCBWKPQdL._SL160_.jpg', 9, 9),
+(787984922, 'The Leadership Challenge', '51qv+NdmuRL._SL160_.jpg', 7, 7),
+(802400248, 'De Imitatione Christi', '514wAewRrmL._SL160_.jpg', 5, 5),
+(802860613, 'Lilith: A Romance', '41h1yfpSX4L._SL160_.jpg', 7, 7),
+(803730411, 'Snowmen at Night', '51xLpMdP9hL._SL160_.jpg', 10, 10),
+(804104549, 'Riding the Iron Rooster', '51MTI5LyIGL._SL160_.jpg', 9, 9),
+(805065415, 'Blue Latitudes: Boldly Going Where Captain Cook Has Gone Before', '51b0a1jhKFL._SL160_.jpg', 8, 8),
+(805396136, 'Molecular Biology of the Gene', '41riHfmSDhL._SL160_.jpg', 8, 8),
+(805418466, 'Experiencing God Day by Day: A Devotional and Journal', '41S2ek62uUL._SL160_.jpg', 7, 7),
+(809015803, 'All But My Life', '416IN9eIHdL._SL160_.jpg', 6, 6),
+(812043634, '501 French Verbs: Fully Conjugated in All the Tenses in a New Easy-To-Learn Format Alphabetically Arranged', '516Zqn1YsqL._SL160_.jpg', 10, 10),
+(812976088, 'The End of Nature', '61aoP5377IL._SL160_.jpg', 6, 6),
+(874478529, 'The Official SAT Study Guide', '4131LvT6LIL._SL160_.jpg', 9, 9),
+(876043759, 'There Is a River: The Story of Edgar Cayce', '415JlgtRaCL._SL160_.jpg', 7, 7),
+(879234490, 'The American Boy\'s Handy Book: What to Do and How to Do It', '612ZsZMNKYL._SL160_.jpg', 7, 7),
+(910034796, 'Courage to Change: One Day at a Time in Al-Anon II', '51yIcT83H+L._SL160_.jpg', 10, 10),
+(915166950, 'Rebuilding: When Your Relationship Ends (Rebuilding Books; For Divorce and Beyond)', '51s9Oodk21L._SL160_.jpg', 7, 7),
+(936070463, 'Stretching', '51UrjNDiENL._SL160_.jpg', 9, 9),
+(966378601, 'Shepherding a Child\'s Heart', '51R089Y1DML._SL160_.jpg', 10, 10),
+(975599500, 'Natural Cures They Don\'t Want You To Know About', '51TDZEWNOEL._SL160_.jpg', 7, 7),
+(981989713, 'Free Money', '51bqXhFK2TL._SL160_.jpg', 7, 7),
+(1118273052, 'Market Wizards: Interviews with Top Traders', '51uzWzvZskL._SL160_.jpg', 7, 7),
+(1118607783, 'Starting an Online Business For Dummies (For Dummies (Computer/Tech))', '514ENeCQ3-L._SL160_.jpg', 8, 8),
+(1118880803, 'Marketing for Dummies', '512rEsiTrXL._SL160_.jpg', 6, 6),
+(1119239281, 'Stock Investing For Dummies (For Dummies (Business & Personal Finance))', '51zWLqoNkcL._SL160_.jpg', 7, 7),
+(1250051126, 'Full Bloom', '31rbngk8r6L._SL160_.jpg', 6, 6),
+(1250058139, 'James Herriot\'s Treasury for Children: Warm and Joyful Tales by the Author of All Creatures Great and Small', '51pDT-YQvOL._SL160_.jpg', 6, 6),
+(1400064287, 'Made to Stick: Why Some Ideas Survive and Others Die', '41hMTwhl6IL._SL160_.jpg', 7, 7),
+(1400064678, 'China Road: A Journey into the Future of a Rising Power', '61azZ0iWdBL._SL160_.jpg', 7, 7),
+(1400082773, 'Dreams from My Father', '51LCJdzcSNL._SL160_.jpg', 5, 5),
+(1423103343, 'The Sea of Monsters', '51M7jQ4ETqL._SL160_.jpg', 10, 10),
+(1423649125, 'My First Summer in the Sierra', '516aouQB2bL._SL160_.jpg', 8, 8),
+(1426216513, 'National Geographic Guide to the National Parks of the United States', '51zjMNhDCeL._SL160_.jpg', 5, 5),
+(1433555506, 'Don\'t Waste Your Life', '51JNBKCFLcL._SL160_.jpg', 9, 9),
+(1433679590, 'The Love Dare', '41wMLZxQmtL._SL160_.jpg', 9, 9),
+(1435145461, 'Gray\'s Anatomy', '41V5VDBX7NL._SL160_.jpg', 5, 5),
+(1449379702, 'Designing Interfaces', '51iGu-amKbL._SL160_.jpg', 10, 10),
+(1451646291, 'Springwater', '51W1MuHa73L._SL160_.jpg', 9, 9),
+(1455536504, 'The Reversal', '5160FGjFR1L._SL160_.jpg', 10, 10),
+(1565126050, 'Last Child in the Woods: Saving Our Children from Nature-Deficit Disorder', '51MSDpQjeLL._SL160_.jpg', 10, 10),
+(1568360100, 'Having Our Say: The Delany Sisters\' First 100 Years', '51MSM7986EL._SL160_.jpg', 6, 6),
+(1572319950, 'Programming Windows', '51PpbUUDKzL._SL160_.jpg', 5, 5),
+(1573223158, 'My Friend Leonard', '41PQEqZ8baL._SL160_.jpg', 6, 6),
+(1579542417, 'Dr. Shapiro\'s Picture Perfect Weight Loss: The Visual Program for Permanent Weight Loss', '513BJ8VBTKL._SL160_.jpg', 9, 9),
+(1581800460, 'Idea Index: Graphic Effects and Typographic Treatments', '41AxjO3kLxL._SL160_.jpg', 6, 6),
+(1582701709, 'The Secret', '51A+qi-XyfL._SL160_.jpg', 10, 10),
+(1585425524, 'The Now Habit: A Strategic Program for Overcoming Procrastination and Enjoying Guilt-Free Play', '51NbewRyO9L._SL160_.jpg', 8, 8),
+(1590529910, 'Authentic Beauty: The Shaping of a Set-Apart Young Woman', '418VwmIS3ML._SL160_.jpg', 7, 7),
+(1591450420, 'It\'s Not About Me: Rescue From the Life We Thought Would Make Us Happy', '413ttv5z+YL._SL160_.jpg', 9, 9),
+(1592232701, 'Uncle John\'s Slightly Irregular Bathroom Reader', '61AFQ5D464L._SL160_.jpg', 5, 5),
+(1592402860, 'How Starbucks Saved My Life: A Son of Privilege Learns to Live Like Everyone Else', '51jhFCO1wzL._SL160_.jpg', 9, 9),
+(1593270542, 'The Unofficial LEGO Builder\'s Guide', '51RaP4lqjHL._SL160_.jpg', 9, 9),
+(1594481954, 'My Friend Leonard', '41PQEqZ8baL._SL160_.jpg', 6, 6),
+(1601422210, 'Radical: Taking Back Your Faith from the American Dream', '41QxhEWm8DL._SL160_.jpg', 6, 6),
+(1620973928, 'Lies My Teacher Told Me: Everything Your American History Textbook Got Wrong', '51zPXyWbZwL._SL160_.jpg', 8, 8),
+(1626361584, 'U.S. Army Survival Manual', '31psDAd7++L._SL160_.jpg', 10, 10),
+(1878257749, 'Earthsearch: A Kids\' Geography Museum in a Book', '51qTWn49pQL._SL160_.jpg', 7, 7),
+(1885167237, 'Inside the Magic Kingdom : Seven Keys to Disney\'s Success', '41YP47WXDRL._SL160_.jpg', 8, 8),
+(1983911054, 'Murder on the Orient Express', '51xlO6rB1wL._SL160_.jpg', 10, 10),
+(3518381768, 'The House of the Spirits', '51RR9yHMRCL._SL160_.jpg', 8, 8),
+(4805311983, 'Hagakure: The Book of the Samurai', '41wzdwwxXJL._SL160_.jpg', 5, 5);
 
 -- --------------------------------------------------------
 
@@ -603,8 +609,8 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`category_id`, `name`) VALUES
 (1, 'business'),
-(2, 'computer'),
-(3, 'education'),
+(2, 'Computer'),
+(3, 'Education'),
 (4, 'health'),
 (5, 'kids'),
 (6, 'literature'),
@@ -612,7 +618,9 @@ INSERT INTO `category` (`category_id`, `name`) VALUES
 (8, 'science'),
 (9, 'sports'),
 (10, 'travel'),
-(11, 'biography');
+(11, 'biography'),
+(32, 'Motivational'),
+(33, 'History');
 
 -- --------------------------------------------------------
 
@@ -630,8 +638,8 @@ CREATE TABLE `categorybook` (
 --
 
 INSERT INTO `categorybook` (`category_id`, `isbn`) VALUES
-(4, 60165979),
 (2, 60523808),
+(4, 60523808),
 (9, 60555971),
 (11, 60688246),
 (3, 60741872),
@@ -884,6 +892,29 @@ INSERT INTO `categorybook` (`category_id`, `isbn`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `isbn` int(11) DEFAULT NULL,
+  `StudentID` varchar(150) DEFAULT NULL,
+  `BookStatus` varchar(25) NOT NULL,
+  `orderID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`isbn`, `StudentID`, `BookStatus`, `orderID`) VALUES
+(60555971, '1001', 'Returned', 1),
+(60555971, '1001', 'Returned', 2),
+(60555971, '1001', 'Issue Requested', 3),
+(60555971, '1001', 'Return Requested', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student`
 --
 
@@ -892,7 +923,7 @@ CREATE TABLE `student` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `student_id` int(10) NOT NULL,
-  `contact` int(11) NOT NULL,
+  `contact` int(15) NOT NULL,
   `isactive` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -901,7 +932,9 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`name`, `email`, `password`, `student_id`, `contact`, `isactive`) VALUES
-('Admin', 'admin@utdallas.edu', '0192023A7BBD73250516F069DF18B500', 999, 883883883, 1);
+('Admin', 'admin@utdallas.edu', '0192023a7bbd73250516f069df18b500', 999, 883883883, 1),
+('Sankalp Bhandari', 'sankalp@utdallas.edu', 'd41d8cd98f00b204e9800998ecf8427e', 1000, 1234567890, 1),
+('Deepak', 'deepak@utdallas.edu', '0192023a7bbd73250516f069df18b500', 1001, 12345, 0);
 
 --
 -- Indexes for dumped tables
@@ -940,6 +973,12 @@ ALTER TABLE `categorybook`
   ADD KEY `isbn` (`isbn`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`orderID`);
+
+--
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
@@ -954,7 +993,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `books`
@@ -966,13 +1005,19 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000;
+  MODIFY `student_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
 
 --
 -- Constraints for dumped tables
