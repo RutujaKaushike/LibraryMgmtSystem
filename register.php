@@ -1,6 +1,7 @@
 <?php
 include_once('assets/config.php');
 if (isset($_POST['email']) && isset($_POST['name'])) {
+    print_r($_POST);
     $email = $_POST['email'];
     $name = $_POST['name'];
     $password = md5($_POST['pass']);
