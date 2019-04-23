@@ -1,5 +1,6 @@
 <?php
 include_once('assets/config.php');
+include_once('assets/scripts.php');
 if (isset($_POST['email']) && isset($_POST['name'])) {
     print_r($_POST);
     $email = $_POST['email'];
@@ -25,6 +26,36 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
     }
 }
 ?>
+<head>
+    <style>
+        span#result.short {
+            padding-left: 100px
+            font-weight: bold;
+            font-size: 12px;
+            color: #FF0000;
+        }
+
+        span#result.weak {
+            font-weight: bold;
+            font-size: 12px;
+            color: orange;
+        }
+
+        span#result.good {
+            padding-left: 100px
+            font-weight: bold;
+            font-size: 12px;
+            color: #2D98F3;
+        }
+
+        span#result.strong {
+            padding-left: 100px
+            font-weight: bold;
+            font-size: 12px;
+            color: limegreen;
+        }
+    </style>
+</head>
 <div class="modal fade" id="RegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -52,6 +83,7 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
                     <div class="md-form">
                         <i class="fas fa-lock prefix grey-text"></i>
                         <input type="password" id="pass" name="pass" class="form-control validate" required>
+                        <span id="result" style="padding-left: 100px;"></span>
                         <label for="pass">Your password</label>
                     </div>
                     <div class="md-form">
@@ -79,6 +111,7 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
 </div>
 <script>
     function checkAvailability() {
+        var email = document.getElementById("email");
         jQuery.ajax({
             url: "check_availability.php",
             data: 'emailid=' + $("#email").val(),
@@ -86,15 +119,15 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
             success: function (data) {
                 if (data === "True") {
                     $("#userAvailabilityStatus").text("Email available for Registration").css("color", "green");
-                    $("#email").get(0).setCustomValidity('');
+                    email.setCustomValidity('');
                     $("#submit").get(0).disable = false;
                 } else if (data === "Error") {
                     $("#userAvailabilityStatus").text("Please check your email").css("color", "red");
-                    $("#email").get(0).setCustomValidity("Please check your email");
+                    email.setCustomValidity("Please check your email");
                     $("#submit").get(0).disable = true;
                 } else {
                     $("#userAvailabilityStatus").text("Email already exists").css("color", "red");
-                    $("#email").get(0).setCustomValidity("Email already exists");
+                    email.setCustomValidity("Email already exists");
                     $("#submit").get(0).disable = true;
                 }
             },
@@ -102,6 +135,41 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
             }
         });
     }
+</script>
+<script>
+    $(document).ready(function () {
+        $('#pass').keyup(function () {
+            $('#result').html(checkStrength($('#pass').val()))
+        });
+
+        function checkStrength(password) {
+            const passwd = document.getElementById("pass");
+            var strength = 0;
+            if (password.length < 6) {
+                $('#result').removeClass().addClass('short');
+                passwd.setCustomValidity("Password too short");
+                submitbtn.disable = true;
+                return 'Too short'
+            }
+            submitbtn.disable = false;
+            passwd.setCustomValidity("");
+            if (password.length > 7) strength += 1;
+            if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength += 1;
+            if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) strength += 1;
+            if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
+            if (password.match(/(.*[!,%,&,@,#,$,^,*,?,_,~].*[!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1;
+            if (strength < 2) {
+                $('#result').removeClass().addClass('weak');
+                return 'Weak'
+            } else if (strength == 2) {
+                $('#result').removeClass().addClass('good');
+                return 'Good'
+            } else {
+                $('#result').removeClass().addClass('strong');
+                return 'Strong'
+            }
+        }
+    });
 </script>
 <script>
     const passwd = document.getElementById("pass")
