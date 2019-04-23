@@ -5,7 +5,6 @@ include_once("header.php");
 include_once("assets/config.php");
 include_once("assets/css.php");
 include_once("assets/scripts.php");
-
 if(count($_SESSION['cartArr'])<=0)
 {
     $message = "No items present!";
@@ -14,13 +13,8 @@ if(count($_SESSION['cartArr'])<=0)
     window.location.href = '/'; 
     </script>";
 }
-
-
 sort($_SESSION['cartArr']);
-
-
 ?>
-
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = '/'">
@@ -50,10 +44,8 @@ sort($_SESSION['cartArr']);
                 }
             }
             ?>
-
             </tbody>
         </table>
-
         <?php
         if (!$_SESSION['login']['user_level']) {
             include_once("login.php");
@@ -64,9 +56,6 @@ sort($_SESSION['cartArr']);
             echo '<button class="btn btn-success" onclick="myFunction4()">Checkout</button>';
         }
         ?>
-
-
-
     </div>
 </div>
 <div class="col-md-3"></div>
@@ -85,7 +74,6 @@ include_once("footer.php");
             }
         });
     }
-
     function myFunction4() {
         jQuery.ajax({
             url: 'cartCheckout.php',
@@ -96,4 +84,3 @@ include_once("footer.php");
         });
     }
 </script>
-

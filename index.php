@@ -8,7 +8,23 @@ if ($_SESSION['login']['user_level'] == 'admin')
     <style>
         tr {
             display: inline-block;
-        }</style>
+            border: 2px #0d0d0d;
+            padding: 1px;
+            width: 215.6px !important;
+        }
+
+        td {
+            padding: 6px !important;
+        }
+
+        .prettydropdown ul {
+            height: 300px !important;
+        }
+
+        #books_filter {
+            margin: 0 !important;
+        }
+    </style>
 </head>
 <body>
 <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="3000">
@@ -37,26 +53,19 @@ if ($_SESSION['login']['user_level'] == 'admin')
         <span class="sr-only">Next</span>
     </a>
 </div>
-<div>
-    <table class="table table-sm" id="books">
-        <thead>
-        <tr>
-            <th>Books' List</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        include_once("assets/config.php");
-        $sql = "SELECT * FROM books";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $i = 0;
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td><img alt='" . $row["isbn"] . "' data-toggle='modal' data-target='#objectInfo' id='" . $row["isbn"] . " ' src='assets/img/bookcover/" . $row["image"] . "' height='320px' width='200px' onclick='myFunction(" . $row["isbn"] . ")' /></td></tr>";
-            }
-        }
-        ?></tbody>
-    </table>
+<br>
+<div class="container container-sm" id="div_table">
+    <div class="col-md-12">
+        <table id="books">
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody class="table table-bordered" id="tbody_book" style="z-index: -1">
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="modal fade" id="BookData" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
@@ -72,7 +81,6 @@ if ($_SESSION['login']['user_level'] == 'admin')
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="CartData" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -103,11 +111,59 @@ include_once("footer.php");
         });
     }
 </script>
-
+<?php
+include_once("assets/scripts.php");
+include_once("footer.php");
+?>
+<script src="assets/js/jquery.prettydropdowns.js"></script>
 <script>
     $(document).ready(function () {
-        $('#books').DataTable();
-        $('.dataTables_length').addClass('bs-select');
+        document.cookie = "category=";
+        jQuery.ajax({
+            url: 'get_book.php',
+            type: 'GET',
+            success: function (result) {
+                $("#tbody_book").html(result);
+                $("#books").DataTable();
+                $.get('get_category.php', function (data) {
+                    data = data.replace("multiple", "onchange=changebook(this)");
+                    $("#books_length").html(data);
+                    $("#listofcategory").css("padding-left", "20px");
+                    $("#books_filter").addClass("md-form");
+                });
+            }
+        });
     });
+
+    function changebook(elem) {
+        var value1 = $(elem).val();
+        document.cookie = "category=" + value1;
+        var data = '<div class="col-md-12">\n' +
+            '        <table id="books">\n' +
+            '            <thead>\n' +
+            '            <tr>\n' +
+            '                <th></th>\n' +
+            '            </tr>\n' +
+            '            </thead>\n' +
+            '            <tbody class="table table-bordered" id="tbody_book" style="z-index: -1">\n' +
+            '            </tbody>\n' +
+            '        </table>\n' +
+            '    </div>';
+        $("#div_table").html(data);
+        jQuery.ajax({
+            url: 'get_book.php',
+            type: 'GET',
+            success: function (result) {
+                $("#tbody_book").html(result);
+                $("#books").DataTable();
+                $.get('get_category.php', function (data) {
+                    data = data.replace("multiple", "onchange=changebook(this)");
+                    $("#books_length").html(data);
+                    $("#listofcategory").css("padding-left", "20px");
+                    $("#books_filter").addClass("md-form");
+                });
+            }
+        });
+    }
 </script>
 </body>

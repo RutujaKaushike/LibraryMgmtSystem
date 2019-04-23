@@ -1,7 +1,6 @@
 <?php
 include_once("assets/config.php");
 session_start();
-
     $cnt=0;
     for ($i = 0; $i < count($_SESSION['cartArr']); $i++)
     {
@@ -11,11 +10,10 @@ session_start();
             $cnt++;
         }
     }
-
     if($cnt==count($_SESSION['cartArr']))
     {
         unset($_SESSION['cartArr']);
-        $message = "Records Inserted successfully!";
+        $message = "Please collect the book from librarian";
         echo "<script type='text/javascript'>
         alert('$message');
         window.location.href = '/';
@@ -29,7 +27,3 @@ session_start();
         window.location.href = '/';
         </script>";
     }
-
-
-
-
