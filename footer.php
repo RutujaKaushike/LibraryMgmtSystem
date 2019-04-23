@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Library Management System</title>
     <link rel="stylesheet" href="assets/css/font-awesome.css">
@@ -18,16 +17,12 @@
 <body>
 <div class="clear"></div>
 <footer class="page-footer font-small black pt-1 fixed-bottom">
-
     <div class="footer-copyright text-center py-2">© 2019 Copyright:
         <a href="https://www.linkedin.com/in/rutujakaushike/"> Rutuja Kaushike</a> & <a
                 href="https://www.linkedin.com/in/sankalpbhandari/"> Sankalp Bhandari </a>
     </div>
-
-
 </footer>
 <!-- Footer -->
-
 <?php
 include_once("register.php");
 include_once("login.php");

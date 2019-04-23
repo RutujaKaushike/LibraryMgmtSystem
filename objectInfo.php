@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
         echo substr($category, 0, strlen($category) - 2);
         echo("</p>");
 //        if ($row['availablecopies'] > 0) {
-            echo "<button class='btn btn-primary btn-md my-0' type='submit' onclick='myFunction1(" . $row["isbn"] . ")'> Add to cart <i class='fas fa-shopping-cart ml-1'></i></button></br>";
+        echo "<button class='btn btn-primary btn-md my-0' type='submit' onclick='myFunction1(" . $row["isbn"] . ")'> Add to cart <i class='fas fa-shopping-cart ml-1'></i></button></br>";
 //        } else {
 //            echo "<button class='btn btn-primary btn-md my-0' type='submit' disabled> Add to cart <i class='fas fa-shopping-cart ml-1' ></i></button></br>";
 //        }
@@ -60,5 +60,4 @@ if ($result->num_rows > 0) {
         });
         window.reload();
     }
-
 </script>

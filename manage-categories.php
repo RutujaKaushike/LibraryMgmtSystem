@@ -6,7 +6,7 @@ if ($_SESSION['login']['user_level'] != 'admin')
     header('Location: /');
 if (strlen($_POST['_id']) > 0) {
     $name = $_POST['category_name'];
-    $sql = "update category set name='".$name."' where category_id='" . $_POST['_id'] . "';";
+    $sql = "update category set name='" . $name . "' where category_id='" . $_POST['_id'] . "';";
     if ($conn->query($sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Success!</strong>The category has been successfully updated
@@ -44,9 +44,6 @@ if (strlen($_POST['_id']) > 0) {
     </style>
 </head>
 <body>
-
-
-
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = 'dashboard.php'">
@@ -89,7 +86,6 @@ if (strlen($_POST['_id']) > 0) {
                 ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
@@ -128,7 +124,6 @@ include_once("assets/scripts.php");
         </div>
     </div>
 </form>
-
 <script>
     $(document).ready(function () {
         $('#categories').DataTable();

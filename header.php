@@ -14,8 +14,7 @@ session_start();
     ?>
 </head>
 <body>
-
-<nav class="navbar navbar-default black" >
+<nav class="navbar navbar-default black">
     <div class="container-fluid">
         <a href="/">
             <img src="assets/img/logoInverted.png" alt="logo" id="logo"></a>

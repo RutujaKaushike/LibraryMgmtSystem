@@ -6,7 +6,7 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
     $name = $_POST['name'];
     $password = md5($_POST['pass']);
     $contact = $_POST['contact'];
-    $sql = "Insert into student (name, email, password, contact) values ('" . $name . "', '" . $email . "', '".$password."',".$contact.");";
+    $sql = "Insert into student (name, email, password, contact) values ('" . $name . "', '" . $email . "', '" . $password . "'," . $contact . ");";
     echo $sql;
     if ($conn->query($sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -84,17 +84,15 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
             data: 'emailid=' + $("#email").val(),
             type: "POST",
             success: function (data) {
-                if (data === "True"){
+                if (data === "True") {
                     $("#userAvailabilityStatus").text("Email available for Registration").css("color", "green");
                     $("#email").get(0).setCustomValidity('');
                     $("#submit").get(0).disable = false;
-                }
-                else if (data === "Error"){
+                } else if (data === "Error") {
                     $("#userAvailabilityStatus").text("Please check your email").css("color", "red");
                     $("#email").get(0).setCustomValidity("Please check your email");
                     $("#submit").get(0).disable = true;
-                }
-                else{
+                } else {
                     $("#userAvailabilityStatus").text("Email already exists").css("color", "red");
                     $("#email").get(0).setCustomValidity("Email already exists");
                     $("#submit").get(0).disable = true;
@@ -104,7 +102,6 @@ if (isset($_POST['email']) && isset($_POST['name'])) {
             }
         });
     }
-
 </script>
 <script>
     const passwd = document.getElementById("pass")

@@ -25,7 +25,6 @@ if (isset($_POST['order_id'])) {
             margin-right: 10px;
         }
     </style>
-
 </head>
 <body>
 <div class="col-md-2"></div>
@@ -60,8 +59,7 @@ if (isset($_POST['order_id'])) {
                             $orders = $orders . '<td style="padding: 0" "><button type="button" class="btn-info btn-sm" onclick="returnbook(this)"><i class="fas fa-undo-alt fa-2x"></i></button>
                            <input name="order_id" value="' . $row['orderID'] . '" type="hidden">
                         </td>';
-                        }
-                        else if ($row['BookStatus'] == 'Issue Requested') {
+                        } else if ($row['BookStatus'] == 'Issue Requested') {
                             $orders = $orders . '<td style="padding: 0" "><button type="button" class="btn-success btn-sm" onclick="approvebook(this)"><i class="fas fa-check fa-2x"></i></button>
                             <button type="button" class="btn-danger btn-sm" onclick="denybook(this)"><i class="fas fa-times fa-2x"></i></button>
                            <input name="order_id" value="' . $row['orderID'] . '" type="hidden">
@@ -75,7 +73,6 @@ if (isset($_POST['order_id'])) {
                 ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
@@ -100,11 +97,11 @@ include_once("footer.php");
                 type: "POST",
                 success: function () {
                 }, error: function () {
-
                 }
             })
         }
     }
+
     function approvebook(elem) {
         if (confirm('Are you sure you want to APPROVE issuing the book?')) {
             elem = $(elem).siblings("input").attr('value');
@@ -114,11 +111,11 @@ include_once("footer.php");
                 type: "POST",
                 success: function () {
                 }, error: function () {
-
                 }
             })
         }
     }
+
     function denybook(elem) {
         if (confirm('Are you sure you want to  DENY issuing the book?')) {
             elem = $(elem).siblings("input").attr('value');
@@ -128,7 +125,6 @@ include_once("footer.php");
                 type: "POST",
                 success: function () {
                 }, error: function () {
-
                 }
             })
         }

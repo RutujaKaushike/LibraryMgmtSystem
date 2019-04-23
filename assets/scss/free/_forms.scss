@@ -55,11 +55,13 @@
       color: $input-success-color;
       opacity: 1;
     }
+
     // Invalid input style
     &.invalid, &:focus.invalid {
       border-bottom: 1px solid $input-error-color;
       box-shadow: 0 1px 0 0 $input-error-color;
     }
+
     &.invalid + label:after, &:focus.invalid + label:after {
       content: attr(data-error);
       color: $input-error-color;
@@ -67,38 +69,43 @@
     }
 
     &.form-control.valid + label:after,
-    &.form-control:focus.valid + label:after  {
+    &.form-control:focus.valid + label:after {
       top: $input-label-valid-top;
     }
+
     &.form-control.invalid + label:after,
-    &.form-control:focus.invalid + label:after  {
+    &.form-control:focus.invalid + label:after {
       top: $input-label-invalid-top;
     }
+
     &.form-control-lg.valid + label:after,
-    &.form-control-lg:focus.valid + label:after  {
+    &.form-control-lg:focus.valid + label:after {
       top: $input-label-valid-top-lg;
     }
+
     &.form-control-lg.invalid + label:after,
-    &.form-control-lg:focus.invalid + label:after  {
+    &.form-control-lg:focus.invalid + label:after {
       top: $input-label-invalid-top-lg;
     }
+
     &.form-control-sm.valid + label:after,
-    &.form-control-sm:focus.valid + label:after  {
+    &.form-control-sm:focus.valid + label:after {
       top: $input-label-valid-top-sm;
     }
+
     &.form-control-sm.invalid + label:after,
-    &.form-control-sm:focus.invalid + label:after  {
+    &.form-control-sm:focus.invalid + label:after {
       top: $input-label-invalid-top-sm;
     }
   }
 
-  > input[type=date]:not(.browser-default)+label {
+  > input[type=date]:not(.browser-default) + label {
     transform: translateY(-27px) scale(0.8);
     transform-origin: 0 0;
   }
 
-  > input[type]:-webkit-autofill:not(.browser-default):not([type="search"])+label,
-  > input[type=time]:not(.browser-default)+label {
+  > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label,
+  > input[type=time]:not(.browser-default) + label {
     transform: translateY(-25px);
     transform-origin: 0 0;
     font-size: .8rem;
@@ -111,22 +118,27 @@
           color: $input-success-color !important;
         }
       }
+
       &:invalid {
         + label {
           color: $input-error-color !important;
         }
       }
     }
+
     .form-control {
       &:valid:focus {
         box-shadow: 0 1px 0 0 $input-success-color !important;
       }
+
       &:valid {
         border-color: $input-success-color !important;
       }
+
       &:invalid:focus {
         box-shadow: 0 1px 0 0 $input-error-color !important;
       }
+
       &:invalid {
         border-color: $input-error-color !important;
       }
@@ -141,10 +153,12 @@
     background-image: none;
     background-color: transparent;
     height: auto;
+
     &:focus {
       box-shadow: none;
       background: transparent;
     }
+
     &:disabled,
     &[readonly] {
       border-bottom: 1px solid $grey-lighten-1;
@@ -156,6 +170,7 @@
   position: relative;
   margin-top: $input-md-form-margin-top;
   margin-bottom: $input-md-form-margin-bottom;
+
   label {
     position: absolute;
     top: $input-label-top;
@@ -163,20 +178,25 @@
     transition: $input-label-transition;
     cursor: text;
     color: $input-label-color;
+
     &.active {
       transform: $input-label-active-transform;
     }
   }
+
   .prefix {
     position: absolute;
     transition: $input-prefix-transition;
+
     &.active {
       color: $input-md-focus-color;
     }
   }
+
   &.form-lg {
     @include make-input($input-validate-mb-lg, $input-label-font-size-lg, $input-label-active-font-size-lg, $input-prefix-top-lg, $input-prefix-font-size-lg, $input-prefix-margin-left-lg, $input-prefix-width-lg, $input-form-text-ml-lg);
   }
+
   &.form-sm {
     @include make-input($input-validate-mb-sm, $input-label-font-size-sm, $input-label-active-font-size-sm, $input-prefix-top-sm, $input-prefix-font-size-sm, $input-prefix-margin-left-sm, $input-prefix-width-sm, $input-form-text-ml-sm);
   }
@@ -188,10 +208,12 @@
       padding: $textarea-padding 0;
       resize: none;
     }
+
     &.md-textarea-auto {
       padding: 0;
       padding-top: $textarea-padding;
     }
+
     // Label color for textarea
     ~ label {
       &.active {
@@ -204,6 +226,7 @@
     position: relative;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
+
     input[type=text],
     input[type=password],
     input[type=email],
@@ -241,16 +264,18 @@
         box-shadow: inset 0px 0px 0px 1px $input-success-color;
       }
 
-      &:focus:not([readonly]).valid + label, &.valid + label:after, &:focus.valid + label:after{
+      &:focus:not([readonly]).valid + label, &.valid + label:after, &:focus.valid + label:after {
         content: attr(data-success);
         color: $input-success-color;
         opacity: 1;
       }
+
       // Invalid input style
       &.invalid, &:focus.invalid {
         border-color: $input-error-color;
         box-shadow: inset 0px 0px 0px 1px $input-error-color;
       }
+
       &:focus:not([readonly]).invalid + label, &.invalid + label:after, &:focus.invalid + label:after {
         content: attr(data-error);
         color: $input-error-color;
@@ -258,21 +283,22 @@
       }
 
       &.form-control.valid + label:after,
-      &.form-control:focus.valid + label:after  {
+      &.form-control:focus.valid + label:after {
         top: 2.75rem;
         left: 0;
         position: absolute;
       }
+
       &.form-control.invalid + label:after,
-      &.form-control:focus.invalid + label:after  {
+      &.form-control:focus.invalid + label:after {
         top: 2.75rem;
         left: 0;
         position: absolute;
       }
     }
 
-    > input[type]:-webkit-autofill:not(.browser-default):not([type="search"])+label,
-    > input[type=time]:not(.browser-default)+label {
+    > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label,
+    > input[type=time]:not(.browser-default) + label {
       transform: translateY(-17px);
       transform-origin: 0 0;
       background: #fff;
@@ -283,8 +309,8 @@
       left: 8px;
     }
 
-    > input[type]:-webkit-autofill:not(.browser-default):not([type="search"])+label.active,
-    > input[type=time]:not(.browser-default)+label.active {
+    > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label.active,
+    > input[type=time]:not(.browser-default) + label.active {
       transform: translateY(-17px);
       transform-origin: 0 0;
     }
@@ -301,6 +327,7 @@
       transition: .2s ease-out;
       cursor: text;
       color: #757575;
+
       &.active {
         transform: translateY(-100%);
         background: #fff;
@@ -311,86 +338,104 @@
         left: 8px;
       }
     }
-  
+
     &.form-lg {
       .form-control {
         &.form-control-lg {
           padding: .5rem .725rem;
         }
       }
+
       label {
         font-size: 1.25rem;
+
         &.active {
           transform: translateY(-100%);
           font-size: 13px;
         }
       }
+
       .prefix {
         top: .65rem;
         font-size: 25px;
-        ~input,
-        ~textarea {
+
+        ~ input,
+        ~ textarea {
           margin-left: 2.2rem;
           width: calc(100% - 2.2rem);
         }
-        ~label {
+
+        ~ label {
           margin-left: 2.2rem;
         }
-        ~.form-text {
+
+        ~ .form-text {
           margin-left: 2.3rem;
         }
       }
     }
+
     &.form-sm {
       .form-control {
         &.form-control-sm {
           padding: .25rem .625rem;
         }
       }
+
       label {
         font-size: .8rem;
         top: .4rem;
+
         &.active {
           transform: translateY(-85%);
           font-size: 10px;
         }
       }
+
       .prefix {
         top: .5rem;
         font-size: 15px;
-        ~input,
-        ~textarea {
+
+        ~ input,
+        ~ textarea {
           margin-left: 1.6rem;
           width: calc(100% - 1.6rem);
         }
-        ~label {
+
+        ~ label {
           margin-left: 1.6rem;
         }
-        ~.form-text {
+
+        ~ .form-text {
           margin-left: 1.7rem;
         }
       }
     }
-  
+
     .prefix {
       position: absolute;
       transition: color .2s;
+
       &:focus {
         color: #4285f4;
       }
     }
+
     .prefix {
       top: .6rem;
       font-size: 20px;
-      ~input,
-      ~textarea {
+
+      ~ input,
+      ~ textarea {
         margin-left: 2rem;
         width: calc(100% - 2rem);
       }
-      ~label {
+
+      ~ label {
         margin-left: 2rem;
       }
-      ~.form-text {
+
+      ~ .form-text {
         margin-left: 2.1rem;
       }
     }
@@ -417,6 +462,7 @@
         box-shadow: none;
         border-bottom: none;
       }
+
       box-sizing: border-box;
       padding: 10px 5px;
       border: 0;
@@ -427,6 +473,7 @@
       background-size: 0 2px, 100% 1px;
       background-position: 50% 100%, 50% 100%;
       transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+
       &:focus {
         background-color: #dcdcdc;
         background-size: 100% 2px, 100% 1px;
@@ -434,13 +481,13 @@
       }
     }
 
-    > input[type=date]:not(.browser-default)+label {
+    > input[type=date]:not(.browser-default) + label {
       transform: translateY(-12px) scale(0.8);
       transform-origin: 0 0;
     }
-  
-    > input[type]:-webkit-autofill:not(.browser-default):not([type="search"])+label,
-    > input[type=time]:not(.browser-default)+label {
+
+    > input[type]:-webkit-autofill:not(.browser-default):not([type="search"]) + label,
+    > input[type=time]:not(.browser-default) + label {
       transform: translateY(-12px);
       transform-origin: 0 0;
       font-size: .8rem;
@@ -453,6 +500,7 @@
     label {
       top: .85rem;
       padding-left: .7rem;
+
       &.active {
         transform: translateY(-65%);
         font-weight: 500;
@@ -463,14 +511,16 @@
   }
 }
 
-.md-form .form-control.is-invalid, 
+.md-form .form-control.is-invalid,
 .was-validated .md-form .form-control:invalid {
   padding-right: 0;
 }
-.md-form .form-control.is-valid, 
+
+.md-form .form-control.is-valid,
 .was-validated .md-form .form-control:valid {
   padding-right: 0;
 }
+
 .needs-validation .md-form label {
   left: .3rem;
 }

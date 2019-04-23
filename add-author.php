@@ -3,7 +3,6 @@ include_once("header.php");
 if ($_SESSION['login']['user_level'] != 'admin')
     header('Location: /');
 include_once('assets/config.php');
-
 if ($_POST['author'] !== null || $_POST['author'] != "") {
     $author = $_POST['author'];
     $sql = "INSERT INTO author(name) VALUES ('" . $author . "');";
@@ -37,24 +36,20 @@ if ($_POST['author'] !== null || $_POST['author'] != "") {
     ?>
 </head>
 <body>
-
-
-
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" method="post" role="form">
         <p class="h4 mb-4">Add Author</p>
         <label for="author"></label><input type="text" name="author" class="form-control mb-4"
-                                             id="author" placeholder="Author">
-
+                                           id="author" placeholder="Author">
         <div class="btn-group" style="float: left">
-            <button type="button" style="float: left" class="btn btn-default" onclick="location.href = 'manage-authors.php'">Cancel</button>
+            <button type="button" style="float: left" class="btn btn-default"
+                    onclick="location.href = 'manage-authors.php'">Cancel
+            </button>
         </div>
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Author</button>
         </div>
-
-
     </form>
 </div>
 <div class="col-md-3"></div>

@@ -47,7 +47,6 @@ if (strlen($_POST['_id']) > 0) {
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title>Online Library Management System | Manage Books</title>
-
 </head>
 <body>
 <div class="col-md-2"></div>
@@ -106,7 +105,6 @@ if (strlen($_POST['_id']) > 0) {
                 ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>

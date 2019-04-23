@@ -5,8 +5,7 @@ include_once("header.php");
 include_once("assets/config.php");
 include_once("assets/css.php");
 include_once("assets/scripts.php");
-if(count($_SESSION['cartArr'])<=0)
-{
+if (count($_SESSION['cartArr']) <= 0) {
     $message = "No items present!";
     echo "<script type='text/javascript'>
     alert('$message');
@@ -49,10 +48,8 @@ sort($_SESSION['cartArr']);
         <?php
         if (!$_SESSION['login']['user_level']) {
             include_once("login.php");
-                echo '<a href="#" class="btn btn-success" data-toggle="modal" data-target="#LoginForm">Checkout</a>';
-        }
-        else
-        {
+            echo '<a href="#" class="btn btn-success" data-toggle="modal" data-target="#LoginForm">Checkout</a>';
+        } else {
             echo '<button class="btn btn-success" onclick="myFunction4()">Checkout</button>';
         }
         ?>
@@ -74,6 +71,7 @@ include_once("footer.php");
             }
         });
     }
+
     function myFunction4() {
         jQuery.ajax({
             url: 'cartCheckout.php',

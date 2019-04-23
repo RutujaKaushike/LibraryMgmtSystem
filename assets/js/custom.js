@@ -1,5 +1,4 @@
-﻿
-/*=============================================================
+﻿/*=============================================================
     Authour URI: www.binarytheme.com
     License: Commons Attribution 3.0
 
@@ -16,7 +15,7 @@
         slide_fun: function () {
 
             $('#carousel-example').carousel({
-                interval:3000 // THIS TIME IS IN MILLI SECONDS
+                interval: 3000 // THIS TIME IS IN MILLI SECONDS
             })
 
         },
@@ -25,21 +24,18 @@
             $('#dataTables-example').dataTable();
 
         },
-       
-        custom_fun:function()
-        {
+
+        custom_fun: function () {
             /*====================================
              WRITE YOUR   SCRIPTS  BELOW
             ======================================*/
 
 
-
-
         },
 
     }
-   
-   
+
+
     $(document).ready(function () {
         mainApp.slide_fun();
         mainApp.dataTable_fun();

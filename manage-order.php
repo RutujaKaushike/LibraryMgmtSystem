@@ -1,9 +1,7 @@
 <?php
-
 include_once("header.php");
 if ($_SESSION['login']['user_level'] != 'student')
     header('Location: /');
-
 include_once('assets/config.php');
 include_once("assets/css.php");
 if (isset($_POST['order_id'])) {
@@ -21,7 +19,6 @@ if (isset($_POST['order_id'])) {
             margin-top: 10px;
         }
     </style>
-
 </head>
 <body>
 <div class="col-md-2"></div>
@@ -63,7 +60,6 @@ if (isset($_POST['order_id'])) {
                 ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
@@ -88,7 +84,6 @@ include_once("footer.php");
                 type: "POST",
                 success: function () {
                 }, error: function () {
-
                 }
             })
         }

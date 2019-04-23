@@ -20,7 +20,6 @@ $result = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
     $authorlist[] = $row['author_id'];
 }
-
 if (isset($_POST["author"]) && isset($_POST["category"])) {
     $isbn = $_POST["isbn"];
     $book = $_POST['book'];
@@ -95,9 +94,6 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     <link rel="stylesheet" href="assets/css/prettydropdowns.css">
 </head>
 <body>
-
-
-
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" role="form" method="post" enctype="multipart/form-data">
@@ -140,7 +136,6 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
                 </select>
             </label>
         </div>
-
         <p style="float: left; padding-left: 10px; font-weight: normal; color: #495057">Select Author(s)</p>
         <div>
             <label>
@@ -170,7 +165,6 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Update Book</button>
         </div>
-
     </form>
 </div>
 <div class="col-md-3"></div>

@@ -13,5 +13,4 @@ if (!empty($_POST["emailid"])) {
             echo "True";
         }
     }
-
 }

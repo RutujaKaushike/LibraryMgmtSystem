@@ -4,7 +4,6 @@ include_once("assets/css.php");
 include_once("header.php");
 if ($_SESSION['login']['user_level'] != 'admin')
     header('Location: /');
-
 if (strlen($_POST['_id']) > 0) {
     $name = $_POST['author_name'];
     $sql = "update author set name='" . $name . "' where author_id='" . $_POST['_id'] . "';";
@@ -45,9 +44,6 @@ if (strlen($_POST['_id']) > 0) {
     </style>
 </head>
 <body>
-
-
-
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = 'dashboard.php'">
@@ -90,7 +86,6 @@ if (strlen($_POST['_id']) > 0) {
                 ?>
                 </tbody>
             </table>
-
         </div>
     </div>
 </div>
@@ -126,7 +121,6 @@ if (strlen($_POST['_id']) > 0) {
         </div>
     </div>
 </form>
-
 <?php
 include_once("assets/scripts.php");
 ?>

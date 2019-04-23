@@ -26,7 +26,6 @@ if (isset($_POST['loginemail']) && isset($_POST['loginpass'])) {
 </div>';
     }
 }
-
 ?>
 <form role="form" method="post">
     <div class="modal fade" id="LoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

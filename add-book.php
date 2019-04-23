@@ -62,15 +62,12 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
     include_once("assets/css.php");
     ?>
     <style>
-        ul{
-            height: 300px!important;
+        ul {
+            height: 300px !important;
         }
     </style>
 </head>
 <body>
-
-
-
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" role="form" method="post" enctype="multipart/form-data">
@@ -98,12 +95,13 @@ if (isset($_POST["author"]) && isset($_POST["category"])) {
         include_once("get_category.php");
         ?>
         <div class="btn-group" style="float: left">
-            <button style="float: left" class="btn btn-default" type="button" onclick="location.href = 'manage-books.php'">Cancel</button>
+            <button style="float: left" class="btn btn-default" type="button"
+                    onclick="location.href = 'manage-books.php'">Cancel
+            </button>
         </div>
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Book</button>
         </div>
-
     </form>
 </div>
 <div class="col-md-3"></div>
@@ -112,7 +110,7 @@ include_once("assets/scripts.php")
 ?>
 <script src="assets/js/jquery.prettydropdowns.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.pretty-dropdown-demo').prettyDropdown();
     });
 </script>

@@ -3,7 +3,6 @@
           rel="stylesheet">
 </head>
 <?php
-
 include_once("header.php");
 if ($_SESSION['login']['user_level'] != 'admin')
     header('Location: /');
@@ -47,13 +46,9 @@ if (isset($_POST['_id'])) {
             height: 34px !important;
             clear: top;
         }
-
     </style>
 </head>
 <body>
-
-
-
 <div class="col-md-2"></div>
 <div class="container container-fluid col-md-8">
     <button style="float: left" class="btn btn-default btn-sm" type="button" onclick="location.href = 'dashboard.php'">
@@ -104,7 +99,6 @@ data-on="Active" data-off="Inactive  ."></td>';
             ?>
             </tbody>
         </table>
-
     </div>
 </div>
 <div class="col-md-2"></div>

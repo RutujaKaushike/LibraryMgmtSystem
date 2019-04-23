@@ -32,24 +32,20 @@ if ($_POST['category'] !== null || $_POST['category'] != "") {
     ?>
 </head>
 <body>
-
-
-
 <div class="col-md-3"></div>
 <div class="container container-fluid col-md-6">
     <form class="text-center border border-light p-5" method="post" role="form">
         <p class="h4 mb-4">Add Category</p>
         <label for="category"></label><input type="text" name="category" class="form-control mb-4"
-                                           id="category" placeholder="Category">
-
+                                             id="category" placeholder="Category">
         <div class="btn-group" style="float: left">
-            <button type="button" style="float: left" class="btn btn-default" onclick="location.href = 'manage-categories.php'">Cancel</button>
+            <button type="button" style="float: left" class="btn btn-default"
+                    onclick="location.href = 'manage-categories.php'">Cancel
+            </button>
         </div>
         <div class="btn-group" style="float: right;">
             <button style="clear: right ;float: right" class="btn btn-default" type="submit">Add Category</button>
         </div>
-
-
     </form>
 </div>
 <div class="col-md-3"></div>

@@ -1,7 +1,7 @@
 <?php
 include_once("header.php");
 if ($_SESSION['login']['user_level'] != 'admin')
-header('Location: /');
+    header('Location: /');
 include_once('assets/config.php');
 $sql = "select * from author";
 $result = $conn->query($sql);
@@ -25,13 +25,12 @@ $noBookIssue = mysqli_num_rows($result);
 <html lang="en">
 <head>
     <style>
-       .alert{
-           cursor: pointer;
-       }
+        .alert {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-
 <div class="content-wrapper">
     <div class="container">
         <div class="row">
@@ -46,7 +45,7 @@ $noBookIssue = mysqli_num_rows($result);
             <div class="col-md-4 col-sm-4 col-xs-6">
                 <div class="alert alert-info back-widget-set text-center"
                      onclick="location.href='admin-orders.php'">
-                <i class="fa fa-bars fa-8x"></i>
+                    <i class="fa fa-bars fa-8x"></i>
                     <h3><?php echo $noBookIssue; ?></h3>
                     Book Issue/ Return Requests
                 </div>
