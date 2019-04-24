@@ -7,16 +7,25 @@ if (isset($_POST['loginemail']) && isset($_POST['loginpass'])) {
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        if ($row['student_id'] == '999') {
-            $user_level = "admin";
+        if ($row['isactive'] == '1') {
+            if ($row['student_id'] == '999') {
+                $user_level = "admin";
+            } else {
+                $user_level = "student";
+            }
+            $_SESSION['login'] = array('user' => $row['name'],
+                'id' => $row['student_id'],
+                'user_level' => $user_level);
+            setcookie("login_user", session_id(), time() + (86400 * 7), '/');
+            header('Location: /');
         } else {
-            $user_level = "student";
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error!</strong>The account is InActive.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
         }
-        $_SESSION['login'] = array('user' => $row['name'],
-            'id' => $row['student_id'],
-            'user_level' => $user_level);
-        setcookie("login_user", session_id(), time() + (86400 * 7), '/');
-        header('Location: /');
     } else {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
   <strong>Error!</strong> Login Unsuccessful
