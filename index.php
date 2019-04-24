@@ -95,10 +95,6 @@ if ($_SESSION['login']['user_level'] == 'admin')
         </div>
     </div>
 </div>
-<?php
-include_once("assets/scripts.php");
-include_once("footer.php");
-?>
 <script>
     function myFunction(objId) {
         jQuery.ajax({
