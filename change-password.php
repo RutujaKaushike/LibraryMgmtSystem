@@ -3,7 +3,7 @@ include_once('assets/config.php');
 include_once('assets/css.php');
 include_once('header.php');
 if (isset($_POST['changenewpass'])) {
-    $student_id = $_COOKIE['student_id'];
+    $student_id = $_SESSION['login']['id'];
     $oldpass = md5($_POST['changeoldpass']);
     $newpass = md5($_POST['changenewpass']);
     $sql = "select * from student where student_id='" . $student_id . "' and password='" . $oldpass . "'";

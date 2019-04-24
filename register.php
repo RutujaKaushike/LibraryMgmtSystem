@@ -2,13 +2,11 @@
 include_once('assets/config.php');
 include_once('assets/scripts.php');
 if (isset($_POST['email']) && isset($_POST['name'])) {
-    print_r($_POST);
     $email = $_POST['email'];
     $name = $_POST['name'];
     $password = md5($_POST['pass']);
     $contact = $_POST['contact'];
     $sql = "Insert into student (name, email, password, contact) values ('" . $name . "', '" . $email . "', '" . $password . "'," . $contact . ");";
-    echo $sql;
     if ($conn->query($sql) === TRUE) {
         echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Success!</strong> You have been registered. Please be patient till admin activates your account

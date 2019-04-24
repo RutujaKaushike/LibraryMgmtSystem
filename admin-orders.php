@@ -9,7 +9,7 @@ if (isset($_POST['order_id'])) {
         $sql = "update orders set BookStatus='Returned' where orderID=" . $_POST['order_id'];
     else if ($_POST['type'] == 'approve')
         $sql = "update orders set BookStatus='Issued' where orderID=" . $_POST['order_id'];
-    else if ($_POST['type'] == 'return')
+    else if ($_POST['type'] == 'deny')
         $sql = "update orders set BookStatus='Denied' where orderID=" . $_POST['order_id'];
     $result = $conn->query($sql);
 }
