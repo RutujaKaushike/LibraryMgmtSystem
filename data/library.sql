@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 21, 2019 at 04:42 AM
+-- Generation Time: Apr 25, 2019 at 08:29 AM
 -- Server version: 5.7.24-log
 -- PHP Version: 7.2.10
 
@@ -937,8 +937,8 @@ VALUES (2, 60523808),
 
 CREATE TABLE `orders`
 (
-    `isbn`       int(11)      DEFAULT NULL,
-    `StudentID`  varchar(150) DEFAULT NULL,
+    `isbn`       bigint(20) DEFAULT NULL,
+    `StudentID`  int(10)    DEFAULT NULL,
     `BookStatus` varchar(25) NOT NULL,
     `orderID`    int(11)     NOT NULL
 ) ENGINE = InnoDB
@@ -949,10 +949,11 @@ CREATE TABLE `orders`
 --
 
 INSERT INTO `orders` (`isbn`, `StudentID`, `BookStatus`, `orderID`)
-VALUES (60555971, '1001', 'Returned', 1),
-       (60555971, '1001', 'Returned', 2),
-       (60555971, '1001', 'Issue Requested', 3),
-       (60555971, '1001', 'Return Requested', 4);
+VALUES (60555971, 1001, 'Returned', 1),
+       (60555971, 1001, 'Returned', 2),
+       (60555971, 1001, 'Issue Requested', 3),
+       (60555971, 1001, 'Return Requested', 4),
+       (1449379702, 1001, 'Issue Requested', 5);
 
 -- --------------------------------------------------------
 
@@ -966,7 +967,7 @@ CREATE TABLE `student`
     `email`      varchar(255) NOT NULL,
     `password`   varchar(255) NOT NULL,
     `student_id` int(10)      NOT NULL,
-    `contact`    int(15)      NOT NULL,
+    `contact`    bigint(15)   NOT NULL,
     `isactive`   tinyint(1)   NOT NULL DEFAULT '0'
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8;
@@ -976,9 +977,8 @@ CREATE TABLE `student`
 --
 
 INSERT INTO `student` (`name`, `email`, `password`, `student_id`, `contact`, `isactive`)
-VALUES ('Admin', 'admin@utdallas.edu', '0192023a7bbd73250516f069df18b500', 999, 883883883, 1),
-       ('Sankalp Bhandari', 'sankalp@utdallas.edu', 'd41d8cd98f00b204e9800998ecf8427e', 1000, 1234567890, 1),
-       ('Deepak', 'deepak@utdallas.edu', '0192023a7bbd73250516f069df18b500', 1001, 12345, 0);
+VALUES ('Admin', 'admin@utdallas.edu', '0192023a7bbd73250516f069df18b500', 999, 8838838838, 1),
+       ('Sankalp Bhandari', 'sankalp@utdallas.edu', '0192023a7bbd73250516f069df18b500', 1001, 4696262979, 0);
 
 --
 -- Indexes for dumped tables
@@ -1020,7 +1020,9 @@ ALTER TABLE `categorybook`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-    ADD PRIMARY KEY (`orderID`);
+    ADD PRIMARY KEY (`orderID`),
+    ADD KEY `isbn` (`isbn`),
+    ADD KEY `StudentID` (`StudentID`);
 
 --
 -- Indexes for table `student`
@@ -1059,7 +1061,7 @@ ALTER TABLE `category`
 --
 ALTER TABLE `orders`
     MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 5;
+    AUTO_INCREMENT = 6;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -1085,6 +1087,13 @@ ALTER TABLE `authorbook`
 ALTER TABLE `categorybook`
     ADD CONSTRAINT `categorybook_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
     ADD CONSTRAINT `categorybook_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`);
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+    ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`),
+    ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`StudentID`) REFERENCES `student` (`student_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT */;
